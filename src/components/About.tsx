@@ -27,9 +27,9 @@ const About = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
             {[
-              { number: "100+", label: "Clients Served" },
-              { number: "5000+", label: "Videos Edited" },
-              { number: "50M+", label: "Total Views Generated" },
+              { number: "50+", label: "Clients Served" },
+              { number: "500+", label: "Videos Edited" },
+              { number: "10M+", label: "Total Views Generated" },
             ].map((stat, index) => (
               <div 
                 key={index} 

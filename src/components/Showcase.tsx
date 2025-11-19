@@ -1,8 +1,33 @@
 import { Eye } from "lucide-react";
+import { motion, Variants } from "framer-motion";
 import video1 from "@/assets/videos/video1.mp4";
 import video2 from "@/assets/videos/video2.mp4";
 import video3 from "@/assets/videos/video3.mp4";
 import video4 from "@/assets/videos/video4.mp4";
+
+// Parent animation (stagger)
+const parentVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+// Child card animation
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 60, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.7,
+      ease: [0.25, 1, 0.5, 1],
+    },
+  },
+};
 
 const Showcase = () => {
   const videos = [
@@ -14,13 +39,14 @@ const Showcase = () => {
 
   return (
     <section
-      id="showcase"
-      className="py-32 relative overflow-hidden bg-gradient-to-b from-background to-muted/20"
-    >
+  id="showcase"
+  className="mt-[800px] py-32 relative overflow-hidden bg-gradient-to-b from-background to-muted/20"
+>
+
       <div className="absolute inset-0 grid-bg opacity-5" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-16">
           <div className="inline-block px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-semibold mb-4">
             Our Work
           </div>
@@ -36,12 +62,26 @@ const Showcase = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* PARENT MOTION WRAPPER (REQUIRED!) */}
+        <motion.div
+  animate={{ opacity: 0.2 }}
+  transition={{ duration: 1 }}
+>
+  TEST ANIMATION
+</motion.div>
+
+        <motion.div
+          variants={parentVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {videos.map((video, index) => (
-            <div
+            <motion.div
               key={index}
-              className="group relative animate-fade-in"
-              style={{ animationDelay: `${index * 100}ms` }}
+              variants={cardVariants}
+              className="group relative"
             >
               <div className="glass-card rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 neon-glow">
                 <div className="aspect-[9/16] relative overflow-hidden rounded-2xl">
@@ -68,9 +108,9 @@ const Showcase = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

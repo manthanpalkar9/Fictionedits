@@ -28,9 +28,13 @@ const Navbar = () => {
           </a>
         </div>
 
-        <Button variant="neon" size="lg">
-          Book a Call
+        <Button variant="neon" size="lg" asChild>
+          <a href="#contact">
+            Book a Call
+          </a>
         </Button>
+    
+
       </div>
     </nav>
   );

@@ -7,6 +7,7 @@ import Features from "@/components/Features";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import BookCall from "@/components/BookCall";
 
 const Index = () => {
   return (
@@ -17,6 +18,10 @@ const Index = () => {
       <Showcase />
       <Process />
       <Features />
+
+      {/* BOOK CALL SECTION */}
+      <BookCall />
+
       <FAQ />
       <CTA />
       <Footer />
