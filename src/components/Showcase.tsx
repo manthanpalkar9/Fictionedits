@@ -38,10 +38,11 @@ const Showcase = () => {
   ];
 
   return (
-    <section
+   <section
   id="showcase"
-  className="mt-[800px] py-32 relative overflow-hidden bg-gradient-to-b from-background to-muted/20"
+  className="py-32 relative overflow-hidden bg-gradient-to-b from-background to-muted/20"
 >
+
 
       <div className="absolute inset-0 grid-bg opacity-5" />
 

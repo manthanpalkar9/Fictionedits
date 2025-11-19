@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/button"; 
+import { Button } from "@/components/ui/button";
 import { Instagram, Youtube } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
   return (
     <section className="relative py-32 flex items-center justify-center overflow-hidden">
-      
+
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-30"
@@ -70,13 +70,25 @@ const Hero = () => {
           </h1>
 
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Premium video editing that converts views into loyal audiences. 
+            Premium video editing that converts views into loyal audiences.
             We craft high-retention short-form content for top creators worldwide.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
             <Button variant="neon" size="xl">Book a Call</Button>
-            <Button variant="neonOutline" size="xl">View Our Work</Button>
+            <Button
+              variant="neonOutline"
+              size="xl"
+              onClick={() => {
+                document.getElementById("showcase")?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }}
+            >
+              View Our Work
+            </Button>
+
           </div>
 
         </div>
