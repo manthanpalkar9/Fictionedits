@@ -11,7 +11,7 @@ import BookCall from "@/components/BookCall";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="bg-background text-foreground overflow-x-hidden">
       <Navbar />
       <Hero />
       <About />

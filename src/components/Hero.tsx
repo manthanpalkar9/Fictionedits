@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"; 
 import { Instagram, Youtube } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 
@@ -22,14 +22,29 @@ const Hero = () => {
       <div className="absolute top-10 right-20 w-32 h-32 rounded-full bg-primary/10 blur-3xl animate-pulse" />
       <div className="absolute bottom-10 left-20 w-40 h-40 rounded-full bg-primary-light/10 blur-3xl animate-pulse delay-1000" />
 
-      {/* Floating social icons */}
+      {/* Floating social icons (CLICKABLE NOW) */}
       <div className="absolute right-12 top-1/3 flex flex-col gap-6 animate-fade-in">
-        <div className="glass-card p-3 rounded-xl neon-glow">
+
+        {/* Instagram */}
+        <a
+          href="https://www.instagram.com/manthan.palkar9"     // <-- Put your link here
+          target="_blank"
+          rel="noopener noreferrer"
+          className="glass-card p-3 rounded-xl neon-glow hover:scale-110 transition-transform"
+        >
           <Instagram className="w-6 h-6 text-primary" />
-        </div>
-        <div className="glass-card p-3 rounded-xl neon-glow">
+        </a>
+
+        {/* YouTube */}
+        <a
+          href="https://youtube.com/@manthanxpalkar"     // <-- Put your link here
+          target="_blank"
+          rel="noopener noreferrer"
+          className="glass-card p-3 rounded-xl neon-glow hover:scale-110 transition-transform"
+        >
           <Youtube className="w-6 h-6 text-primary" />
-        </div>
+        </a>
+
       </div>
 
       {/* Floating metrics */}
