@@ -30,7 +30,7 @@ const Navbar = () => {
 
         <Button variant="neon" size="lg" asChild>
           <a
-            href="https://calendly.com/manthanpalkar/30min"
+            href="https://calendly.com/manthanpalkar9/let-s-work"
             target="_blank"
             rel="noopener noreferrer"
           >

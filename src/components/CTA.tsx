@@ -28,7 +28,7 @@ const CTA = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
             <Button asChild variant="neon" size="xl" className="group">
               <a
-                href="https://calendly.com/manthanpalkar/30min"
+                href="https://calendly.com/manthanpalkar9/let-s-work"
                 target="_blank"
                 rel="noopener noreferrer"
               >
