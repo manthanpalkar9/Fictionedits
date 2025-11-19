@@ -5,7 +5,7 @@ const CTA = () => {
   return (
     <section className="py-32 relative overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-10" />
-      
+
       {/* Glowing orbs */}
       <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
       <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-primary-light/10 rounded-full blur-3xl animate-pulse delay-1000" />
@@ -19,17 +19,24 @@ const CTA = () => {
                 Next Level?
               </span>
             </h2>
-            
+
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
               Book a free discovery call with our team and discover how we can transform your content strategy.
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-            <Button variant="neon" size="xl" className="group">
-              Book Here
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <Button asChild variant="neon" size="xl" className="group">
+              <a
+                href="https://calendly.com/manthanpalkar/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Book Here
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
             </Button>
+
           </div>
 
           {/* Trust indicators */}

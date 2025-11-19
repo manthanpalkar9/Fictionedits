@@ -29,11 +29,16 @@ const Navbar = () => {
         </div>
 
         <Button variant="neon" size="lg" asChild>
-          <a href="#contact">
+          <a
+            href="https://calendly.com/manthanpalkar/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Book a Call
           </a>
         </Button>
-    
+
+
 
       </div>
     </nav>

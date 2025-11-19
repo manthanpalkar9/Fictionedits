@@ -75,7 +75,16 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
-            <Button variant="neon" size="xl">Book a Call</Button>
+            <Button asChild variant="neon" size="xl">
+              <a
+                href="https://calendly.com/manthanpalkar/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Book a Call
+              </a>
+            </Button>
+
             <Button
               variant="neonOutline"
               size="xl"
