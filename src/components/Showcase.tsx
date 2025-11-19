@@ -1,15 +1,22 @@
 import { Eye } from "lucide-react";
+import video1 from "@/assets/videos/video1.mp4";
+import video2 from "@/assets/videos/video2.mp4";
+import video3 from "@/assets/videos/video3.mp4";
+import video4 from "@/assets/videos/video4.mp4";
 
 const Showcase = () => {
   const videos = [
-    { name: "Tech Review Series", views: "500K+" },
-    { name: "Fitness Journey", views: "350K+" },
-    { name: "Gaming Highlights", views: "1.2M+" },
-    { name: "Cooking Tutorial", views: "280K+" },
+    { name: "Tradebymanish", views: "120K+", src: video1 },
+    { name: "Drharshkanwar", views: "30K+", src: video2 },
+    { name: "Mom'srecipe", views: "30K+", src: video3 },
+    { name: "Tradebymanish", views: "121K+", src: video4 },
   ];
 
   return (
-    <section id="showcase" className="py-32 relative overflow-hidden bg-gradient-to-b from-background to-muted/20">
+    <section
+      id="showcase"
+      className="py-32 relative overflow-hidden bg-gradient-to-b from-background to-muted/20"
+    >
       <div className="absolute inset-0 grid-bg opacity-5" />
 
       <div className="container mx-auto px-6 relative z-10">
@@ -24,7 +31,8 @@ const Showcase = () => {
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Real results from real creators. See how our editing drives views and engagement.
+            Real results from real creators. See how our editing drives views
+            and engagement.
           </p>
         </div>
 
@@ -36,24 +44,27 @@ const Showcase = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="glass-card rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 neon-glow">
-                {/* Video mockup - vertical aspect ratio */}
-                <div className="aspect-[9/16] bg-gradient-to-br from-muted to-muted/50 relative overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-primary border-b-8 border-b-transparent ml-1" />
-                    </div>
-                  </div>
-                  
-                  {/* Decorative gradient overlay */}
+                <div className="aspect-[9/16] relative overflow-hidden rounded-2xl">
+                  <video
+                    src={video.src}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
                 </div>
 
-                {/* Video info */}
                 <div className="p-4">
-                  <h3 className="font-semibold text-foreground mb-2">{video.name}</h3>
+                  <h3 className="font-semibold text-foreground mb-2">
+                    {video.name}
+                  </h3>
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <Eye className="w-4 h-4" />
-                    <span className="text-sm font-medium text-primary">{video.views} Views</span>
+                    <span className="text-sm font-medium text-primary">
+                      {video.views} Views
+                    </span>
                   </div>
                 </div>
               </div>
