@@ -50,12 +50,12 @@ const Hero = () => {
       {/* Floating metrics */}
       <div className="absolute left-12 top-1/4 glass-card p-4 rounded-xl animate-fade-in">
         <div className="text-sm text-muted-foreground mb-1">Total Views</div>
-        <div className="text-2xl font-bold text-glow">50M+</div>
+        <div className="text-2xl font-bold text-glow">10M+</div>
       </div>
 
       <div className="absolute left-24 bottom-1/4 glass-card p-4 rounded-xl animate-fade-in delay-500">
         <div className="text-sm text-muted-foreground mb-1">Total Likes</div>
-        <div className="text-2xl font-bold text-glow">2M+</div>
+        <div className="text-2xl font-bold text-glow">100k+</div>
       </div>
 
       {/* Main content */}

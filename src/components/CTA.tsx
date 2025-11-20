@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import CountUp from "react-countup";
 
 const CTA = () => {
   return (
@@ -25,6 +26,7 @@ const CTA = () => {
             </p>
           </div>
 
+          {/* BOOK BUTTON */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
             <Button asChild variant="neon" size="xl" className="group">
               <a
@@ -36,24 +38,44 @@ const CTA = () => {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
-
           </div>
 
-          {/* Trust indicators */}
+          {/* Trust indicators with ANIMATION */}
           <div className="grid grid-cols-3 gap-8 pt-12 max-w-2xl mx-auto">
             <div className="text-center">
-              <div className="text-3xl font-bold text-glow mb-2">100+</div>
+              <CountUp
+                start={0}
+                end={50}
+                duration={2}
+                suffix="+"
+                className="text-3xl font-bold text-glow mb-2"
+              />
               <div className="text-sm text-muted-foreground">Happy Clients</div>
             </div>
+
             <div className="text-center">
-              <div className="text-3xl font-bold text-glow mb-2">5000+</div>
+              <CountUp
+                start={0}
+                end={500}
+                duration={2}
+                suffix="+"
+                className="text-3xl font-bold text-glow mb-2"
+              />
               <div className="text-sm text-muted-foreground">Videos Created</div>
             </div>
+
             <div className="text-center">
-              <div className="text-3xl font-bold text-glow mb-2">50M+</div>
+              <CountUp
+                start={0}
+                end={10}
+                duration={2}
+                suffix="M+"
+                className="text-3xl font-bold text-glow mb-2"
+              />
               <div className="text-sm text-muted-foreground">Views Generated</div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
