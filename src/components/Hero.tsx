@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Instagram, Youtube } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
+import CountUp from "react-countup";
+
 
 const Hero = () => {
   return (
@@ -50,13 +52,26 @@ const Hero = () => {
       {/* Floating metrics */}
       <div className="absolute left-12 top-1/4 glass-card p-4 rounded-xl animate-fade-in">
         <div className="text-sm text-muted-foreground mb-1">Total Views</div>
-        <div className="text-2xl font-bold text-glow">10M+</div>
+        <CountUp
+          start={0}
+          end={50}
+          duration={2}
+          suffix="M+"
+          className="text-2xl font-bold text-glow"
+        />
       </div>
 
       <div className="absolute left-24 bottom-1/4 glass-card p-4 rounded-xl animate-fade-in delay-500">
         <div className="text-sm text-muted-foreground mb-1">Total Likes</div>
-        <div className="text-2xl font-bold text-glow">100k+</div>
+        <CountUp
+          start={0}
+          end={2}
+          duration={2}
+          suffix="M+"
+          className="text-2xl font-bold text-glow"
+        />
       </div>
+
 
       {/* Main content */}
       <div className="relative z-10 container mx-auto px-6 text-center">
