@@ -9,9 +9,7 @@ import video4 from "@/assets/videos/video4.mp4";
 const parentVariants: Variants = {
   hidden: {},
   visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.2 },
   },
 };
 
@@ -38,39 +36,33 @@ const Showcase = () => {
   ];
 
   return (
-   <section
-  id="showcase"
-  className="py-32 relative overflow-hidden bg-gradient-to-b from-background to-muted/20"
->
-
-
+    <section
+      id="showcase"
+      className="py-32 relative overflow-hidden bg-gradient-to-b from-background to-muted/20 font-helvetica"
+    >
       <div className="absolute inset-0 grid-bg opacity-5" />
 
       <div className="container mx-auto px-6 relative z-10">
+
+        {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-block px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-semibold mb-4">
+          <div className="inline-block px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-semibold mb-4 tracking-tight md:tracking-[-0.06em]">
             Our Work
           </div>
-          <h2 className="text-5xl md:text-6xl font-heading font-bold tracking-tight mb-6">
+
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight md:tracking-[-0.06em] mb-6 leading-tight">
             Content That{" "}
             <span className="text-glow bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
               Performs
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Real results from real creators. See how our editing drives views
-            and engagement.
+
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto tracking-tight md:tracking-[-0.06em]">
+            Real results from real creators. See how our editing drives views and engagement.
           </p>
         </div>
 
-        {/* PARENT MOTION WRAPPER (REQUIRED!) */}
-        <motion.div
-  animate={{ opacity: 0.2 }}
-  transition={{ duration: 1 }}
->
-  TEST ANIMATION
-</motion.div>
-
+        {/* Showcase Grid with Animation */}
         <motion.div
           variants={parentVariants}
           initial="hidden"
@@ -79,12 +71,10 @@ const Showcase = () => {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {videos.map((video, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              className="group relative"
-            >
+            <motion.div key={index} variants={cardVariants} className="group relative">
               <div className="glass-card rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 neon-glow">
+
+                {/* Video */}
                 <div className="aspect-[9/16] relative overflow-hidden rounded-2xl">
                   <video
                     src={video.src}
@@ -97,21 +87,25 @@ const Showcase = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
                 </div>
 
-                <div className="p-4">
-                  <h3 className="font-semibold text-foreground mb-2">
+                {/* Content */}
+                <div className="p-4 tracking-tight md:tracking-[-0.06em]">
+                  <h3 className="font-semibold text-foreground mb-2 tracking-tight md:tracking-[-0.06em]">
                     {video.name}
                   </h3>
-                  <div className="flex items-center gap-2 text-muted-foreground">
+
+                  <div className="flex items-center gap-2 text-muted-foreground tracking-tight md:tracking-[-0.06em]">
                     <Eye className="w-4 h-4" />
                     <span className="text-sm font-medium text-primary">
                       {video.views} Views
                     </span>
                   </div>
                 </div>
+
               </div>
             </motion.div>
           ))}
         </motion.div>
+
       </div>
     </section>
   );
