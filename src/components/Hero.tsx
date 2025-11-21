@@ -59,8 +59,8 @@ const Hero = () => {
       {/* Grid overlay */}
       <div className="absolute inset-0 grid-bg opacity-20" />
 
-      {/* Floating Container */}
-      <div className="absolute inset-0 pointer-events-none z-20">
+      {/* ---------------------- FLOATING CONTAINER (FIXED) ---------------------- */}
+      <div className="absolute inset-0 pointer-events-none z-40">
 
         {/* Floating glow blob 1 */}
         <Floating>
@@ -78,7 +78,7 @@ const Hero = () => {
             href="https://www.instagram.com/manthan.palkar9"
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute right-6 md:right-12 top-1/3 glass-card p-3 rounded-xl neon-glow hover:scale-110 transition-transform translate-z-0"
+            className="pointer-events-auto absolute right-6 md:right-12 top-1/3 glass-card p-3 rounded-xl neon-glow hover:scale-110 transition-transform translate-z-0"
           >
             <Instagram className="w-6 h-6 text-primary" />
           </a>
@@ -90,7 +90,7 @@ const Hero = () => {
             href="https://youtube.com/@manthanxpalkar"
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute right-6 md:right-12 top-1/3 mt-20 glass-card p-3 rounded-xl neon-glow hover:scale-110 transition-transform translate-z-0"
+            className="pointer-events-auto absolute right-6 md:right-12 top-1/3 mt-20 glass-card p-3 rounded-xl neon-glow hover:scale-110 transition-transform translate-z-0"
           >
             <Youtube className="w-6 h-6 text-primary" />
           </a>
@@ -123,9 +123,11 @@ const Hero = () => {
             />
           </div>
         </Floating>
-      </div>
 
-      {/* Main content */}
+      </div>
+      {/* ---------------------- END FLOATING CONTAINER ---------------------- */}
+
+      {/* Main Content */}
       <div className="relative z-30 container mx-auto px-6 text-center">
         <div className="max-w-5xl mx-auto space-y-8 animate-fade-in">
 
