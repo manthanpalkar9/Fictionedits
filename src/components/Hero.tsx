@@ -1,11 +1,51 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Instagram, Youtube } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 import CountUp from "react-countup";
 
+import { motion, useMotionValue } from "framer-motion";
+import { useEffect } from "react";
+
+// Floating Component
+const Floating = ({ children }: { children: React.ReactNode }) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  useEffect(() => {
+    const handleMove = (e: MouseEvent) => {
+      const depth = 0.03; // parallax intensity
+      x.set((e.clientX - window.innerWidth / 2) * depth);
+      y.set((e.clientY - window.innerHeight / 2) * depth);
+    };
+
+    window.addEventListener("mousemove", handleMove);
+    return () => window.removeEventListener("mousemove", handleMove);
+  }, []);
+
+  return (
+    <motion.div
+      style={{ x, y }}
+      animate={{
+        y: [0, -10, 0],
+        x: [0, 6, 0],
+      }}
+      transition={{
+        duration: 6,
+        repeat: Infinity,
+        repeatType: "mirror",
+        ease: "easeInOut",
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
 const Hero = () => {
   return (
-    <section className="relative py-32 flex items-center justify-center overflow-hidden font-helvetica">
+    <section className="relative py-32 flex items-center justify-center font-helvetica">
 
       {/* Background image */}
       <div
@@ -19,60 +59,74 @@ const Hero = () => {
       {/* Grid overlay */}
       <div className="absolute inset-0 grid-bg opacity-20" />
 
-      {/* Floating elements */}
-      <div className="absolute top-10 right-20 w-32 h-32 rounded-full bg-primary/10 blur-3xl animate-pulse" />
-      <div className="absolute bottom-10 left-20 w-40 h-40 rounded-full bg-primary-light/10 blur-3xl animate-pulse delay-1000" />
+      {/* Floating Container */}
+      <div className="absolute inset-0 pointer-events-none z-20">
 
-      {/* Floating social icons */}
-      <div className="absolute right-6 md:right-12 top-1/3 flex flex-col gap-6 animate-fade-in">
+        {/* Floating glow blob 1 */}
+        <Floating>
+          <div className="absolute top-10 right-20 w-32 h-32 rounded-full bg-primary/10 blur-3xl opacity-80 translate-z-0" />
+        </Floating>
 
-        {/* Instagram */}
-        <a
-          href="https://www.instagram.com/manthan.palkar9"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="glass-card p-3 rounded-xl neon-glow hover:scale-110 transition-transform"
-        >
-          <Instagram className="w-6 h-6 text-primary" />
-        </a>
+        {/* Floating glow blob 2 */}
+        <Floating>
+          <div className="absolute bottom-10 left-20 w-40 h-40 rounded-full bg-primary-light/10 blur-3xl opacity-70 translate-z-0" />
+        </Floating>
 
-        {/* YouTube */}
-        <a
-          href="https://youtube.com/@manthanxpalkar"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="glass-card p-3 rounded-xl neon-glow hover:scale-110 transition-transform"
-        >
-          <Youtube className="w-6 h-6 text-primary" />
-        </a>
+        {/* Floating Instagram icon */}
+        <Floating>
+          <a
+            href="https://www.instagram.com/manthan.palkar9"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute right-6 md:right-12 top-1/3 glass-card p-3 rounded-xl neon-glow hover:scale-110 transition-transform translate-z-0"
+          >
+            <Instagram className="w-6 h-6 text-primary" />
+          </a>
+        </Floating>
 
-      </div>
+        {/* Floating YouTube icon */}
+        <Floating>
+          <a
+            href="https://youtube.com/@manthanxpalkar"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute right-6 md:right-12 top-1/3 mt-20 glass-card p-3 rounded-xl neon-glow hover:scale-110 transition-transform translate-z-0"
+          >
+            <Youtube className="w-6 h-6 text-primary" />
+          </a>
+        </Floating>
 
-      {/* Metrics */}
-      <div className="absolute left-6 md:left-12 top-1/4 glass-card p-4 rounded-xl animate-fade-in tracking-tight md:tracking-[-0.06em]">
-        <div className="text-sm text-muted-foreground mb-1">Total Views</div>
-        <CountUp
-          start={0}
-          end={50}
-          duration={2}
-          suffix="M+"
-          className="text-2xl font-bold text-glow"
-        />
-      </div>
+        {/* Floating "Total Views" */}
+        <Floating>
+          <div className="absolute left-6 md:left-12 top-1/4 glass-card p-4 rounded-xl translate-z-0 tracking-tight">
+            <div className="text-sm text-muted-foreground mb-1">Total Views</div>
+            <CountUp
+              start={0}
+              end={50}
+              duration={2}
+              suffix="M+"
+              className="text-2xl font-bold text-glow"
+            />
+          </div>
+        </Floating>
 
-      <div className="absolute left-10 md:left-24 bottom-1/4 glass-card p-4 rounded-xl animate-fade-in delay-500 tracking-tight md:tracking-[-0.06em]">
-        <div className="text-sm text-muted-foreground mb-1">Total Likes</div>
-        <CountUp
-          start={0}
-          end={2}
-          duration={2}
-          suffix="M+"
-          className="text-2xl font-bold text-glow"
-        />
+        {/* Floating "Total Likes" */}
+        <Floating>
+          <div className="absolute left-10 md:left-24 bottom-1/4 glass-card p-4 rounded-xl translate-z-0 tracking-tight">
+            <div className="text-sm text-muted-foreground mb-1">Total Likes</div>
+            <CountUp
+              start={0}
+              end={2}
+              duration={2}
+              suffix="M+"
+              className="text-2xl font-bold text-glow"
+            />
+          </div>
+        </Floating>
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 container mx-auto px-6 text-center">
+      <div className="relative z-30 container mx-auto px-6 text-center">
         <div className="max-w-5xl mx-auto space-y-8 animate-fade-in">
 
           <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tight md:tracking-[-0.06em] font-helvetica">
@@ -88,7 +142,12 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
-            <Button asChild variant="neon" size="xl" className="tracking-tight md:tracking-[-0.06em] font-helvetica">
+            <Button
+              asChild
+              variant="neon"
+              size="xl"
+              className="tracking-tight md:tracking-[-0.06em] font-helvetica"
+            >
               <a
                 href="https://calendly.com/manthanpalkar9/let-s-work"
                 target="_blank"
