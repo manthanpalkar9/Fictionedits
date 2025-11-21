@@ -78,11 +78,12 @@ const Hero = () => {
             href="https://www.instagram.com/manthan.palkar9"
             target="_blank"
             rel="noopener noreferrer"
-            className="pointer-events-auto absolute right-6 md:right-12 top-1/3 glass-card p-3 rounded-xl neon-glow hover:scale-110 transition-transform translate-z-0"
+            className="pointer-events-auto absolute right-10 top-[45%] glass-card p-4 rounded-xl neon-glow hover:scale-110 transition-transform translate-z-0"
           >
-            <Instagram className="w-6 h-6 text-primary" />
+            <Instagram className="w-7 h-7 text-primary drop-shadow-[0_0_8px_rgba(168,85,247,0.9)]" />
           </a>
         </Floating>
+
 
         {/* Floating YouTube icon */}
         <Floating>
@@ -90,39 +91,46 @@ const Hero = () => {
             href="https://youtube.com/@manthanxpalkar"
             target="_blank"
             rel="noopener noreferrer"
-            className="pointer-events-auto absolute right-6 md:right-12 top-1/3 mt-20 glass-card p-3 rounded-xl neon-glow hover:scale-110 transition-transform translate-z-0"
+            className="pointer-events-auto absolute right-10 top-[55%] glass-card p-4 rounded-xl neon-glow hover:scale-110 transition-transform translate-z-0"
           >
-            <Youtube className="w-6 h-6 text-primary" />
+            <Youtube className="w-7 h-7 text-primary drop-shadow-[0_0_8px_rgba(168,85,247,0.9)]" />
           </a>
         </Floating>
 
+
+        {/* Floating "Total Views" */}
         {/* Floating "Total Views" */}
         <Floating>
-          <div className="absolute left-6 md:left-12 top-1/4 glass-card p-4 rounded-xl translate-z-0 tracking-tight">
-            <div className="text-sm text-muted-foreground mb-1">Total Views</div>
+          <div className="pointer-events-auto absolute left-10 top-[28%] glass-card p-5 rounded-xl translate-z-0 tracking-tight shadow-[0_0_20px_rgba(168,85,247,0.3)] border border-primary/40">
+            <div className="text-sm text-primary/80 mb-1">Total Views</div>
+
             <CountUp
               start={0}
               end={50}
               duration={2}
               suffix="M+"
-              className="text-2xl font-bold text-glow"
+              className="text-3xl font-bold text-primary drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]"
             />
           </div>
         </Floating>
 
+
+        {/* Floating "Total Likes" */}
         {/* Floating "Total Likes" */}
         <Floating>
-          <div className="absolute left-10 md:left-24 bottom-1/4 glass-card p-4 rounded-xl translate-z-0 tracking-tight">
-            <div className="text-sm text-muted-foreground mb-1">Total Likes</div>
+          <div className="pointer-events-auto absolute left-16 bottom-[28%] glass-card p-5 rounded-xl translate-z-0 tracking-tight shadow-[0_0_20px_rgba(168,85,247,0.3)] border border-primary/40">
+            <div className="text-sm text-primary/80 mb-1">Total Likes</div>
+
             <CountUp
               start={0}
               end={2}
               duration={2}
               suffix="M+"
-              className="text-2xl font-bold text-glow"
+              className="text-3xl font-bold text-primary drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]"
             />
           </div>
         </Floating>
+
 
       </div>
       {/* ---------------------- END FLOATING CONTAINER ---------------------- */}
