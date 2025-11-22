@@ -91,7 +91,7 @@ const Hero = () => {
 
         {/* Total Views – MOVED DOWN */}
         <Floating>
-          <div className="pointer-events-auto absolute left-8 top-[35%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
+          <div className="pointer-events-auto absolute left-10 top-[23%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
             <div className="text-sm text-primary/80 mb-1">Total Views</div>
             <CountUp
               start={0}
@@ -103,9 +103,10 @@ const Hero = () => {
           </div>
         </Floating>
 
+
         {/* Total Likes – MOVED DOWN AND INWARD */}
         <Floating>
-          <div className="pointer-events-auto absolute left-14 top-[48%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
+          <div className="pointer-events-auto absolute left-10 top-[40%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
             <div className="text-sm text-primary/80 mb-1">Total Likes</div>
             <CountUp
               start={0}
@@ -116,6 +117,7 @@ const Hero = () => {
             />
           </div>
         </Floating>
+
 
       </div>
 
