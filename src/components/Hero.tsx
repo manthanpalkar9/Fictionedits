@@ -67,9 +67,7 @@ const Hero = () => {
 
         {/* --- TOTAL LIKES (TOP LEFT) --- */}
         <Floating>
-          <div className="pointer-events-auto absolute top-[10%] left-[3%]
-      glass-card p-5 rounded-xl border border-primary/40 
-      shadow-[0_0_20px_rgba(168,85,247,0.35)]">
+          <div className="pointer-events-auto absolute top-[8%] left-[3%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
             <div className="text-sm text-primary/80 mb-1">Total Likes</div>
             <CountUp
               start={0}
@@ -83,9 +81,7 @@ const Hero = () => {
 
         {/* --- TOTAL VIEWS (MIDDLE LEFT) --- */}
         <Floating>
-          <div className="pointer-events-auto absolute top-[45%] left-[3%]
-      glass-card p-5 rounded-xl border border-primary/40 
-      shadow-[0_0_20px_rgba(168,85,247,0.35)]">
+          <div className="pointer-events-auto absolute top-[50%] left-[3%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
             <div className="text-sm text-primary/80 mb-1">Total Views</div>
             <CountUp
               start={0}
@@ -103,8 +99,7 @@ const Hero = () => {
             href="https://www.instagram.com/manthan.palkar9"
             target="_blank"
             rel="noopener noreferrer"
-            className="pointer-events-auto absolute top-[10%] right-[3%]
-        glass-card p-4 rounded-xl neon-glow hover:scale-110 transition-transform"
+            className="pointer-events-auto absolute top-[8%] right-[3%] glass-card p-4 rounded-xl neon-glow hover:scale-110 transition-transform"
           >
             <Instagram className="w-7 h-7 text-primary drop-shadow-[0_0_8px_rgba(168,85,247,0.9)]" />
           </a>
@@ -116,8 +111,7 @@ const Hero = () => {
             href="https://youtube.com/@manthanxpalkar"
             target="_blank"
             rel="noopener noreferrer"
-            className="pointer-events-auto absolute top-[45%] right-[3%]
-        glass-card p-4 rounded-xl neon-glow hover:scale-110 transition-transform"
+            className="pointer-events-auto absolute top-[50%] right-[3%] glass-card p-4 rounded-xl neon-glow hover:scale-110 transition-transform"
           >
             <Youtube className="w-7 h-7 text-primary drop-shadow-[0_0_8px_rgba(168,85,247,0.9)]" />
           </a>
