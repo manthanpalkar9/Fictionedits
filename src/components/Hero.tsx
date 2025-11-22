@@ -106,7 +106,7 @@ const Hero = () => {
 
         {/* Total Likes – MOVED DOWN AND INWARD */}
         <Floating>
-          <div className="pointer-events-auto absolute left-15 top-[100%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
+          <div className="pointer-events-auto absolute left-35 top-[120%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
             <div className="text-sm text-primary/80 mb-1">Total Likes</div>
             <CountUp
               start={0}
