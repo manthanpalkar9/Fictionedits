@@ -91,12 +91,12 @@ const Hero = () => {
 
         {/* Total Views – MOVED DOWN */}
         <Floating>
-          <div className="pointer-events-auto absolute left-10 top-[80%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
+          <div className="pointer-events-auto absolute left-25 top-[200%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
             <div className="text-sm text-primary/80 mb-1">Total Views</div>
             <CountUp
               start={0}
-              end={50}
-              duration={2}
+              end={10}
+              duration={5}
               suffix="M+"
               className="text-3xl font-bold text-primary drop-shadow-[0_0_10px_rgba(168,85,247,0.9)]"
             />
