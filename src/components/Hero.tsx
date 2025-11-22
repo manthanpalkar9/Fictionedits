@@ -81,7 +81,7 @@ const Hero = () => {
 
         {/* --- TOTAL VIEWS (MIDDLE LEFT) --- */}
         <Floating>
-          <div className="pointer-events-auto absolute left-8 top-[38%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
+          <div className="pointer-events-auto absolute left-25 top-[100%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
             <div className="text-sm text-primary/80 mb-1">Total Views</div>
             <CountUp
               start={0}
