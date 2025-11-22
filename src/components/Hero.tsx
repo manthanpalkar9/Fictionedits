@@ -52,46 +52,46 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background -z-10" />
       <div className="absolute inset-0 grid-bg opacity-15 -z-10" />
 
-      {/* FLOATING LAYER FIX: highest z-index */}
-      <div className="absolute inset-0 pointer-events-none z-[9999]">
+      {/* FLOATING LAYER */}
+      <div className="absolute inset-0 pointer-events-none z-[99999]">
 
-        {/* Glow Blob 1 */}
+        {/* Glow 1 */}
         <Floating>
-          <div className="absolute top-10 right-16 w-32 h-32 rounded-full bg-primary/10 blur-3xl opacity-70" />
+          <div className="absolute top-[20%] right-20 w-32 h-32 rounded-full bg-primary/10 blur-3xl opacity-70" />
         </Floating>
 
-        {/* Glow Blob 2 */}
+        {/* Glow 2 */}
         <Floating>
-          <div className="absolute bottom-14 left-16 w-40 h-40 rounded-full bg-primary-light/10 blur-3xl opacity-70" />
+          <div className="absolute bottom-[20%] left-20 w-40 h-40 rounded-full bg-primary-light/10 blur-3xl opacity-70" />
         </Floating>
 
-        {/* Instagram Icon */}
+        {/* Instagram icon – MOVED LOWER */}
         <Floating>
           <a
             href="https://www.instagram.com/manthan.palkar9"
             target="_blank"
             rel="noopener noreferrer"
-            className="pointer-events-auto absolute right-10 top-[38%] glass-card p-4 rounded-xl neon-glow hover:scale-110 transition-transform"
+            className="pointer-events-auto absolute right-8 top-[32%] glass-card p-4 rounded-xl neon-glow hover:scale-110 transition-transform"
           >
-            <Instagram className="w-7 h-7 text-primary drop-shadow-[0_0_10px_rgba(168,85,247,0.9)]" />
+            <Instagram className="w-7 h-7 text-primary drop-shadow-[0_0_8px_rgba(168,85,247,0.9)]" />
           </a>
         </Floating>
 
-        {/* YouTube Icon */}
+        {/* YouTube icon – MATCHED WITH IG */}
         <Floating>
           <a
             href="https://youtube.com/@manthanxpalkar"
             target="_blank"
             rel="noopener noreferrer"
-            className="pointer-events-auto absolute right-10 top-[52%] glass-card p-4 rounded-xl neon-glow hover:scale-110 transition-transform"
+            className="pointer-events-auto absolute right-8 top-[42%] glass-card p-4 rounded-xl neon-glow hover:scale-110 transition-transform"
           >
-            <Youtube className="w-7 h-7 text-primary drop-shadow-[0_0_10px_rgba(168,85,247,0.9)]" />
+            <Youtube className="w-7 h-7 text-primary drop-shadow-[0_0_8px_rgba(168,85,247,0.9)]" />
           </a>
         </Floating>
 
-        {/* Total Views */}
+        {/* Total Views – MOVED DOWN */}
         <Floating>
-          <div className="pointer-events-auto absolute left-10 top-[26%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
+          <div className="pointer-events-auto absolute left-8 top-[35%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
             <div className="text-sm text-primary/80 mb-1">Total Views</div>
             <CountUp
               start={0}
@@ -103,9 +103,9 @@ const Hero = () => {
           </div>
         </Floating>
 
-        {/* Total Likes */}
+        {/* Total Likes – MOVED DOWN AND INWARD */}
         <Floating>
-          <div className="pointer-events-auto absolute left-14 bottom-[26%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
+          <div className="pointer-events-auto absolute left-14 top-[48%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
             <div className="text-sm text-primary/80 mb-1">Total Likes</div>
             <CountUp
               start={0}
@@ -118,6 +118,7 @@ const Hero = () => {
         </Floating>
 
       </div>
+
 
       {/* MAIN CONTENT */}
       <div className="relative z-50 container mx-auto px-6 text-center">
