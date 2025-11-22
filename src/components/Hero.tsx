@@ -65,33 +65,23 @@ const Hero = () => {
           <div className="absolute bottom-[20%] left-20 w-40 h-40 rounded-full bg-primary-light/10 blur-3xl opacity-70" />
         </Floating>
 
-        {/* Instagram icon – MOVED LOWER */}
+        {/* --- TOTAL LIKES (TOP LEFT) --- */}
         <Floating>
-          <a
-            href="https://www.instagram.com/manthan.palkar9"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="pointer-events-auto absolute right-8 top-[32%] glass-card p-4 rounded-xl neon-glow hover:scale-110 transition-transform"
-          >
-            <Instagram className="w-7 h-7 text-primary drop-shadow-[0_0_8px_rgba(168,85,247,0.9)]" />
-          </a>
+          <div className="pointer-events-auto absolute left-8 top-[18%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
+            <div className="text-sm text-primary/80 mb-1">Total Likes</div>
+            <CountUp
+              start={0}
+              end={100}
+              duration={5}
+              suffix="k+"
+              className="text-3xl font-bold text-primary drop-shadow-[0_0_10px_rgba(168,85,247,0.9)]"
+            />
+          </div>
         </Floating>
 
-        {/* YouTube icon – MATCHED WITH IG */}
+        {/* --- TOTAL VIEWS (MIDDLE LEFT) --- */}
         <Floating>
-          <a
-            href="https://youtube.com/@manthanxpalkar"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="pointer-events-auto absolute right-8 top-[42%] glass-card p-4 rounded-xl neon-glow hover:scale-110 transition-transform"
-          >
-            <Youtube className="w-7 h-7 text-primary drop-shadow-[0_0_8px_rgba(168,85,247,0.9)]" />
-          </a>
-        </Floating>
-
-        {/* Total Views – MOVED DOWN */}
-        <Floating>
-          <div className="pointer-events-auto absolute left-25 top-[100%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
+          <div className="pointer-events-auto absolute left-8 top-[38%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
             <div className="text-sm text-primary/80 mb-1">Total Views</div>
             <CountUp
               start={0}
@@ -103,20 +93,30 @@ const Hero = () => {
           </div>
         </Floating>
 
-
-        {/* Total Likes – MOVED DOWN AND INWARD */}
+        {/* --- INSTAGRAM (TOP RIGHT) --- */}
         <Floating>
-          <div className="pointer-events-auto absolute left-35 top-[60%] glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_20px_rgba(168,85,247,0.35)]">
-            <div className="text-sm text-primary/80 mb-1">Total Likes</div>
-            <CountUp
-              start={0}
-              end={100}
-              duration={2}
-              suffix="k+"
-              className="text-3xl font-bold text-primary drop-shadow-[0_0_10px_rgba(168,85,247,0.9)]"
-            />
-          </div>
+          <a
+            href="https://www.instagram.com/manthan.palkar9"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pointer-events-auto absolute right-8 top-[20%] glass-card p-4 rounded-xl neon-glow hover:scale-110 transition-transform"
+          >
+            <Instagram className="w-7 h-7 text-primary drop-shadow-[0_0_8px_rgba(168,85,247,0.9)]" />
+          </a>
         </Floating>
+
+        {/* --- YOUTUBE (MIDDLE RIGHT) --- */}
+        <Floating>
+          <a
+            href="https://youtube.com/@manthanxpalkar"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pointer-events-auto absolute right-8 top-[40%] glass-card p-4 rounded-xl neon-glow hover:scale-110 transition-transform"
+          >
+            <Youtube className="w-7 h-7 text-primary drop-shadow-[0_0_8px_rgba(168,85,247,0.9)]" />
+          </a>
+        </Floating>
+
 
 
       </div>
