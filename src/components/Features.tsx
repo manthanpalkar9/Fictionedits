@@ -146,18 +146,145 @@ const Features = () => {
               {/* Glow blob */}
               <div className="absolute -top-10 right-0 h-32 w-32 rounded-full bg-primary/40 blur-3xl opacity-70 animate-pulse" />
 
-              {/* Fake chart bars */}
-              <div className="absolute inset-x-0 top-16 px-8 pointer-events-none">
-                <div className="flex items-end gap-1 h-16 opacity-30">
-                  {[6, 10, 14, 9, 13, 17, 12].map((h, idx) => (
-                    <div
-                      key={idx}
-                      className="flex-1 rounded-full bg-gradient-to-t from-primary/10 to-primary/70"
-                      style={{ height: `${h * 4}px` }}
+              {/* Unique Graphics for each card */}
+              {feature.tag === "Growth" && (
+                // Growth Card: Upward trending bar chart
+                <div className="absolute inset-x-0 top-16 px-8 pointer-events-none">
+                  <div className="flex items-end gap-1.5 h-16 opacity-40">
+                    {[4, 7, 10, 8, 12, 15, 18].map((h, idx) => (
+                      <motion.div
+                        key={idx}
+                        className="flex-1 rounded-t bg-gradient-to-t from-primary/20 to-primary/80 shadow-[0_0_10px_rgba(168,85,247,0.5)]"
+                        style={{ height: `${h * 4}px` }}
+                        initial={{ height: 0 }}
+                        animate={{ height: `${h * 4}px` }}
+                        transition={{ delay: idx * 0.1, duration: 0.5 }}
+                      />
+                    ))}
+                  </div>
+                  {/* Trend line overlay */}
+                  <svg className="absolute bottom-0 left-8 right-8 h-16 opacity-30" viewBox="0 0 200 60">
+                    <path
+                      d="M 0 50 Q 30 45, 60 35 T 120 15 T 180 5"
+                      stroke="url(#gradient-growth)"
+                      strokeWidth="2.5"
+                      fill="none"
+                      strokeLinecap="round"
                     />
-                  ))}
+                    <defs>
+                      <linearGradient id="gradient-growth" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="hsl(271, 91%, 65%)" stopOpacity="0.3" />
+                        <stop offset="100%" stopColor="hsl(271, 95%, 76%)" stopOpacity="0.8" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
                 </div>
-              </div>
+              )}
+
+              {feature.tag === "Design" && (
+                // Design Card: Palette and brush strokes
+                <div className="absolute inset-x-0 top-16 px-8 pointer-events-none">
+                  {/* Palette circle */}
+                  <div className="absolute right-12 top-0 w-20 h-20 opacity-30">
+                    <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/40 to-primary/10 border-2 border-primary/30" />
+                    {/* Color dots on palette */}
+                    <div className="absolute top-2 right-2 w-3 h-3 rounded-full bg-primary/80" />
+                    <div className="absolute top-6 left-1 w-2 h-2 rounded-full bg-primary/60" />
+                    <div className="absolute bottom-2 right-1 w-2.5 h-2.5 rounded-full bg-primary/70" />
+                  </div>
+                  {/* Brush strokes */}
+                  <div className="absolute left-8 top-4 space-y-3 opacity-25">
+                    <motion.div
+                      className="w-16 h-1.5 rounded-full bg-gradient-to-r from-transparent via-primary/60 to-transparent"
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 0.4 }}
+                      transition={{ delay: 0.2, duration: 0.6 }}
+                    />
+                    <motion.div
+                      className="w-20 h-1.5 rounded-full bg-gradient-to-r from-transparent via-primary/50 to-transparent ml-4"
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 0.3 }}
+                      transition={{ delay: 0.4, duration: 0.6 }}
+                    />
+                    <motion.div
+                      className="w-14 h-1.5 rounded-full bg-gradient-to-r from-transparent via-primary/70 to-transparent ml-2"
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 0.35 }}
+                      transition={{ delay: 0.6, duration: 0.6 }}
+                    />
+                  </div>
+                  {/* Geometric shapes */}
+                  <div className="absolute bottom-2 right-16 space-y-2 opacity-20">
+                    <div className="w-8 h-8 border-2 border-primary/40 rounded-lg rotate-12" />
+                    <div className="w-6 h-6 border-2 border-primary/30 rounded-full ml-2" />
+                  </div>
+                </div>
+              )}
+
+              {feature.tag === "Strategy" && (
+                // Strategy Card: Arrow trend with nodes
+                <div className="absolute inset-x-0 top-16 px-8 pointer-events-none">
+                  {/* Strategy visualization with arrows and nodes */}
+                  <svg className="w-full h-16 opacity-40" viewBox="0 0 200 60">
+                    {/* Main trend line with arrows */}
+                    <path
+                      d="M 10 50 L 40 35 L 70 25 L 100 18 L 130 12 L 160 8 L 190 5"
+                      stroke="url(#gradient-strategy)"
+                      strokeWidth="3"
+                      fill="none"
+                      strokeLinecap="round"
+                      markerEnd="url(#arrowhead)"
+                    />
+                    {/* Nodes on strategy points */}
+                    {[
+                      { x: 40, y: 35 },
+                      { x: 100, y: 18 },
+                      { x: 160, y: 8 },
+                    ].map((point, idx) => (
+                      <motion.circle
+                        key={idx}
+                        cx={point.x}
+                        cy={point.y}
+                        r="4"
+                        fill="hsl(271, 91%, 65%)"
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 0.8 }}
+                        transition={{ delay: idx * 0.2 + 0.3, duration: 0.4 }}
+                      />
+                    ))}
+                    {/* Connecting lines between nodes */}
+                    <path
+                      d="M 10 50 L 190 5"
+                      stroke="hsl(271, 91%, 65%)"
+                      strokeWidth="1"
+                      strokeDasharray="4 4"
+                      opacity="0.2"
+                    />
+                    <defs>
+                      <linearGradient id="gradient-strategy" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="hsl(271, 91%, 65%)" stopOpacity="0.5" />
+                        <stop offset="100%" stopColor="hsl(271, 95%, 76%)" stopOpacity="1" />
+                      </linearGradient>
+                      <marker
+                        id="arrowhead"
+                        markerWidth="10"
+                        markerHeight="10"
+                        refX="9"
+                        refY="3"
+                        orient="auto"
+                      >
+                        <polygon points="0 0, 10 3, 0 6" fill="hsl(271, 91%, 65%)" opacity="0.8" />
+                      </marker>
+                    </defs>
+                  </svg>
+                  {/* Strategy nodes labels */}
+                  <div className="absolute bottom-0 left-8 right-8 flex justify-between text-[8px] text-primary/50 opacity-60">
+                    <span>Start</span>
+                    <span>Execute</span>
+                    <span>Scale</span>
+                  </div>
+                </div>
+              )}
 
               {/* Content */}
               <div className="relative px-7 pt-7 pb-8 flex flex-col justify-between h-full">

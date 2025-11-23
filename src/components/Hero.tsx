@@ -287,7 +287,7 @@ const Hero = () => {
         <FloatingBlob top="60%" left="70%" width="400px" height="400px" delay={2} />
         <FloatingBlob top="30%" left="50%" width="250px" height="250px" delay={4} />
         <FloatingBlob top="80%" left="10%" width="350px" height="350px" delay={1} />
-      </div>
+          </div>
 
       {/* FLOATING UI ELEMENTS LAYER (z-index 30-40) */}
       <div className="absolute inset-0 pointer-events-none z-30">
