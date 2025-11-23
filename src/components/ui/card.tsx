@@ -1,4 +1,6 @@
 import * as React from "react";
+import LineGraph from "@/components/ui/LineGraph";
+
 
 import { cn } from "@/lib/utils";
 
@@ -39,5 +41,21 @@ const CardFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDiv
   ),
 );
 CardFooter.displayName = "CardFooter";
+
+<div className="glass-card rounded-2xl p-6">
+  <div className="flex items-center justify-between">
+    <span className="text-sm text-muted-foreground">Last 6 Months</span>
+    <span className="w-2 h-2 bg-primary rounded-full" />
+  </div>
+
+  {/* 👉 Add graph here */}
+  <LineGraph />
+
+  <div className="mt-4 flex justify-between text-xs text-muted-foreground">
+    <span>Day/counts</span>
+    <span className="text-primary">250+</span>
+  </div>
+</div>
+
 
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent };
