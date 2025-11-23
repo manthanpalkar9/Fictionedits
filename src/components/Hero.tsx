@@ -1,14 +1,16 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Instagram, Youtube, Heart, ArrowRight, TrendingUp } from "lucide-react";
+import { Instagram, Youtube, Heart } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 import CountUp from "react-countup";
-
 import { motion, useMotionValue } from "framer-motion";
 import { useEffect } from "react";
 
-// TikTok and Facebook Icon Components
+/* ------------------------------------------------------------------ */
+/*  ICONS  */
+/* ------------------------------------------------------------------ */
+
 const TikTokIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
@@ -21,10 +23,18 @@ const FacebookIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// Enhanced Floating Component with parallax + bobbing
-const Floating = ({ children, depth = 0.03, className = "", style = {} }: { 
-  children: React.ReactNode; 
-  depth?: number; 
+/* ------------------------------------------------------------------ */
+/* FLOATING WRAPPER — now supports mobile override */
+/* ------------------------------------------------------------------ */
+
+const Floating = ({
+  children,
+  depth = 0.03,
+  className = "",
+  style = {},
+}: {
+  children: React.ReactNode;
+  depth?: number;
   className?: string;
   style?: React.CSSProperties;
 }) => {
@@ -36,15 +46,14 @@ const Floating = ({ children, depth = 0.03, className = "", style = {} }: {
       x.set((e.clientX - window.innerWidth / 2) * depth);
       y.set((e.clientY - window.innerHeight / 2) * depth);
     };
-
     window.addEventListener("mousemove", handleMove);
     return () => window.removeEventListener("mousemove", handleMove);
-  }, [depth, x, y]);
+  }, [depth]);
 
   return (
     <motion.div
-      className={className}
-      style={{ x, y, position: 'absolute', ...style }}
+      className={`float-mobile-base ${className}`}
+      style={{ x, y, position: "absolute", ...style }}
       animate={{ y: [0, -12, 0], x: [0, 6, 0] }}
       transition={{
         duration: 6,
@@ -58,7 +67,10 @@ const Floating = ({ children, depth = 0.03, className = "", style = {} }: {
   );
 };
 
-// Scribble Arrow Component
+/* ------------------------------------------------------------------ */
+/* SCRIBBLE ARROW */
+/* ------------------------------------------------------------------ */
+
 const ScribbleArrow = ({ className = "" }: { className?: string }) => (
   <svg
     className={`absolute ${className}`}
@@ -70,51 +82,45 @@ const ScribbleArrow = ({ className = "" }: { className?: string }) => (
     strokeWidth="2"
     opacity="0.6"
   >
-    <path
-      d="M5 50 Q20 40, 35 30 T65 10"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M65 10 L60 5 L65 10 L60 15"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M5 50 Q20 40, 35 30 T65 10" strokeLinecap="round" />
+    <path d="M65 10 L60 5 L65 10 L60 15" strokeLinecap="round" />
   </svg>
 );
 
-// 1. TOP-LEFT: Floating Stat Card (Total Likes) - Rotated
+/* ------------------------------------------------------------------ */
+/* FLOATING CARDS — all mobile-optimized */
+/* ------------------------------------------------------------------ */
+
 const FloatingStatCard = () => (
-  <Floating depth={0.025} className="pointer-events-auto top-[10%] left-[5%] md:scale-100 scale-50 z-30">
+  <Floating className="float-stat top-[10%] left-[5%] md:scale-100">
     <div className="relative">
       <motion.div
-        className="glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_30px_rgba(168,85,247,0.5)] relative"
+        className="glass-card p-4 md:p-5 rounded-xl border border-primary/40 shadow-[0_0_30px_rgba(168,85,247,0.5)]"
         style={{ rotate: -12 }}
-        whileHover={{ scale: 1.05, rotate: -10 }}
-        transition={{ type: "spring", stiffness: 300 }}
       >
         <div className="flex items-center gap-2 mb-2">
-          <div className="text-xs text-primary/80 font-medium">Total Likes</div>
-          <div className="w-2 h-2 rounded-full bg-primary"></div>
+          <div className="text-xs text-primary/80">Total Likes</div>
+          <div className="w-2 h-2 rounded-full bg-primary" />
         </div>
-        <div className="flex items-center gap-3">
+
+        <div className="flex items-center gap-2">
           <CountUp
             start={0}
             end={63}
             duration={3}
-            className="text-4xl font-bold text-white drop-shadow-[0_0_15px_rgba(168,85,247,0.9)]"
+            className="text-3xl md:text-4xl font-bold text-white drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]"
           />
-          <span className="text-2xl font-bold text-primary">,000</span>
+          <span className="text-xl md:text-2xl font-bold text-primary">,000</span>
         </div>
-        <Heart className="absolute -top-2 -right-2 w-8 h-8 text-primary opacity-70" fill="currentColor" />
+
+        <Heart className="absolute -top-2 -right-2 w-6 h-6 text-primary opacity-70" />
       </motion.div>
-      {/* Scribble Arrow pointing to headline */}
-      <ScribbleArrow className="top-1/2 left-full translate-x-2 -translate-y-1/2" />
+
+      <ScribbleArrow className="top-1/2 left-full translate-x-2 -translate-y-1/2 md:block hidden" />
     </div>
   </Floating>
 );
 
-// 2. MIDDLE-LEFT: Floating Bar Chart
 const FloatingBarChart = () => {
   const bars = [
     { height: 40, label: "M1" },
@@ -126,86 +132,44 @@ const FloatingBarChart = () => {
   ];
 
   return (
-    <Floating depth={0.025} className="pointer-events-auto top-[70%] left-[7%] md:scale-100 scale-50 z-30">
+    <Floating className="float-bar top-[70%] left-[5%] md:scale-100 hide-mobile">
       <div className="relative">
-        <motion.div
-          className="glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_30px_rgba(168,85,247,0.5)]"
-          whileHover={{ scale: 1.05 }}
-          transition={{ type: "spring", stiffness: 300 }}
-        >
-          <div className="flex items-center gap-2 mb-3">
-            <div className="text-xs text-primary/80 font-medium">Last 6 Months</div>
-            <div className="w-2 h-2 rounded-full bg-primary"></div>
+        <motion.div className="glass-card p-4 rounded-xl border border-primary/40 shadow-[0_0_30px_rgba(168,85,247,0.5)]">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="text-xs text-primary/80">Last 6 Months</div>
+            <div className="w-2 h-2 bg-primary rounded-full" />
           </div>
-          <div className="flex items-end gap-2 h-24">
+
+          <div className="flex items-end gap-1 h-20">
             {bars.map((bar, i) => (
-              <div key={i} className="flex-1 flex flex-col items-center gap-1">
+              <div key={i} className="flex-1 flex flex-col items-center">
                 <div
-                  className="w-full rounded-t bg-gradient-to-t from-primary/60 to-primary shadow-[0_0_15px_rgba(168,85,247,0.6)]"
+                  className="w-full rounded-t bg-gradient-to-t from-primary/60 to-primary shadow-[0_0_10px_rgba(168,85,247,0.6)]"
                   style={{ height: `${bar.height}%` }}
                 />
-                <div className="text-[8px] text-muted-foreground">{bar.label}</div>
+                <span className="text-[7px] text-muted-foreground">{bar.label}</span>
               </div>
             ))}
           </div>
-          <div className="flex justify-between text-[8px] text-muted-foreground mt-2">
-            <span>Day counts</span>
-            <span>250+</span>
-          </div>
         </motion.div>
-        {/* Scribble Arrow pointing upward */}
-        <ScribbleArrow className="bottom-full left-1/2 -translate-x-1/2 -translate-y-2 rotate-180" />
       </div>
     </Floating>
   );
 };
 
-// 3. TOP-RIGHT: Floating Social Icon Cluster
 const FloatingSocialCluster = () => (
-  <Floating depth={0.025} className="pointer-events-auto top-[10%] right-[5%] md:scale-100 scale-50 z-30">
+  <Floating className="float-social top-[10%] right-[5%] md:scale-100">
     <motion.div
-      className="glass-card px-6 py-4 rounded-full border border-primary/40 shadow-[0_0_30px_rgba(168,85,247,0.5)] flex items-center gap-4"
-      style={{ rotate: 8 }}
-      whileHover={{ scale: 1.05, rotate: 6 }}
-      transition={{ type: "spring", stiffness: 300 }}
+      className="glass-card px-4 py-3 rounded-full border border-primary/40 shadow-[0_0_30px_rgba(168,85,247,0.5)] flex items-center gap-3"
     >
-      <a
-        href="https://www.instagram.com/manthan.palkar9"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="p-2 rounded-lg hover:bg-primary/10 transition-colors"
-      >
-        <Instagram className="w-6 h-6 text-primary drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]" />
-      </a>
-      <a
-        href="https://youtube.com/@manthanxpalkar"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="p-2 rounded-lg hover:bg-primary/10 transition-colors"
-      >
-        <Youtube className="w-6 h-6 text-primary drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]" />
-      </a>
-      <a
-        href="#"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="p-2 rounded-lg hover:bg-primary/10 transition-colors"
-      >
-        <TikTokIcon className="w-6 h-6 text-primary drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]" />
-      </a>
-      <a
-        href="#"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="p-2 rounded-lg hover:bg-primary/10 transition-colors"
-      >
-        <FacebookIcon className="w-6 h-6 text-primary drop-shadow-[0_0_10px_rgba(168,85,247,0.8)]" />
-      </a>
+      <Instagram className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+      <Youtube className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+      <TikTokIcon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+      <FacebookIcon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
     </motion.div>
   </Floating>
 );
 
-// 4. MIDDLE-RIGHT: Floating Views Panel
 const FloatingViewsPanel = () => {
   const dailyViews = [
     { day: 1, views: "+1000" },
@@ -216,62 +180,35 @@ const FloatingViewsPanel = () => {
   ];
 
   return (
-    <Floating depth={0.025} className="pointer-events-auto top-[45%] right-[5%] md:scale-100 scale-50 z-30">
-      <div className="relative">
-        <motion.div
-          className="glass-card p-5 rounded-xl border border-primary/40 shadow-[0_0_30px_rgba(168,85,247,0.5)] min-w-[200px]"
-          whileHover={{ scale: 1.05 }}
-          transition={{ type: "spring", stiffness: 300 }}
-        >
-          <div className="flex items-center gap-2 mb-3">
-            <div className="text-xs text-primary/80 font-medium">Total Views</div>
-            <div className="w-2 h-2 rounded-full bg-primary"></div>
-          </div>
-          <div className="text-[10px] text-muted-foreground mb-3">Last 7 days</div>
-          <div className="space-y-2">
-            {dailyViews.map((item, i) => (
-              <div key={i} className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Day {item.day}</span>
-                <span className="text-primary font-semibold">{item.views}</span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-        {/* Scribble Arrow connecting to text */}
-        <ScribbleArrow className="top-1/2 right-full -translate-x-2 -translate-y-1/2 scale-x-[-1]" />
-      </div>
+    <Floating className="float-views top-[45%] right-[5%] md:scale-100 hide-mobile">
+      <motion.div className="glass-card p-4 rounded-xl border border-primary/40 shadow-[0_0_30px_rgba(168,85,247,0.5)] w-[150px] md:w-[200px]">
+        <div className="flex items-center gap-2 mb-2">
+          <div className="text-xs text-primary/80">Total Views</div>
+          <div className="w-2 h-2 bg-primary rounded-full" />
+        </div>
+
+        <div className="text-[10px] text-muted-foreground mb-2">Last 7 days</div>
+
+        <div className="space-y-1">
+          {dailyViews.map((item, i) => (
+            <div key={i} className="flex items-center justify-between text-xs">
+              <span className="text-muted-foreground">Day {item.day}</span>
+              <span className="text-primary font-semibold">{item.views}</span>
+            </div>
+          ))}
+        </div>
+      </motion.div>
     </Floating>
   );
 };
 
-// 5. Floating Background Blobs
-const FloatingBlob = ({ top, left, width, height, delay = 0 }: {
-  top: string;
-  left: string;
-  width: string;
-  height: string;
-  delay?: number;
-}) => (
-  <Floating depth={0.02} className="absolute" style={{ top, left, width, height }}>
-    <motion.div
-      className="rounded-full bg-primary/10 blur-3xl opacity-30 w-full h-full"
-      animate={{
-        scale: [1, 1.2, 1],
-        opacity: [0.2, 0.4, 0.2],
-      }}
-      transition={{
-        duration: 8 + delay,
-        repeat: Infinity,
-        repeatType: "reverse",
-        ease: "easeInOut",
-      }}
-    />
-  </Floating>
-);
+/* ------------------------------------------------------------------ */
+/* HERO MAIN */
+/* ------------------------------------------------------------------ */
 
 const Hero = () => {
   return (
-    <section className="relative py-32 flex items-center justify-center font-helvetica overflow-hidden min-h-screen">
+    <section className="hero-section relative py-32 md:py-32 py-20 flex items-center justify-center font-helvetica overflow-hidden min-h-screen">
 
       {/* Background Layers */}
       <div
@@ -281,15 +218,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background -z-10" />
       <div className="absolute inset-0 grid-bg opacity-15 -z-10" />
 
-      {/* Organic Background Blobs */}
-      <div className="absolute inset-0 z-10 pointer-events-none">
-        <FloatingBlob top="10%" left="20%" width="300px" height="300px" delay={0} />
-        <FloatingBlob top="60%" left="70%" width="400px" height="400px" delay={2} />
-        <FloatingBlob top="30%" left="50%" width="250px" height="250px" delay={4} />
-        <FloatingBlob top="80%" left="10%" width="350px" height="350px" delay={1} />
-          </div>
-
-      {/* FLOATING UI ELEMENTS LAYER (z-index 30-40) */}
+      {/* FLOATING UI ELEMENTS */}
       <div className="absolute inset-0 pointer-events-none z-30">
         <FloatingStatCard />
         <FloatingBarChart />
@@ -297,30 +226,25 @@ const Hero = () => {
         <FloatingViewsPanel />
       </div>
 
-      {/* MAIN CONTENT (z-index 50 - above floating elements) */}
+      {/* MAIN CONTENT */}
       <div className="relative z-50 container mx-auto px-6 text-center">
-        <div className="max-w-5xl mx-auto space-y-8 animate-fade-in">
+        <div className="max-w-5xl mx-auto space-y-6 md:space-y-8 animate-fade-in">
 
-          <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tight">
+          <h1 className="hero-headline text-3xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tight">
             Transform Your Content Into
             <span className="block text-glow bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
               Viral Masterpieces
             </span>
           </h1>
 
-          <p className="text-lg md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="hero-subtext text-base md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Premium video editing that converts views into loyal audiences.
             We craft high-retention short-form content for top creators worldwide.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
-
-            <Button asChild variant="neon" size="xl">
-              <a
-                href="https://calendly.com/manthanpalkar9/let-s-work"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+            <Button asChild variant="neon" size="xl" className="mobile-btn">
+              <a href="https://calendly.com/manthanpalkar9/let-s-work" target="_blank">
                 Book a Call
               </a>
             </Button>
@@ -328,6 +252,7 @@ const Hero = () => {
             <Button
               variant="neonOutline"
               size="xl"
+              className="mobile-btn"
               onClick={() =>
                 document.getElementById("showcase")?.scrollIntoView({
                   behavior: "smooth",
@@ -337,8 +262,8 @@ const Hero = () => {
             >
               View Our Work
             </Button>
-
           </div>
+
         </div>
       </div>
 

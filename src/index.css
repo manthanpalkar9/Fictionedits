@@ -116,3 +116,44 @@ body {
     letter-spacing: -0.01em; /* normal on mobile */
   }
 }
+/* -------------------------------------------------- */
+/* HERO MOBILE FIXES */
+/* -------------------------------------------------- */
+@media (max-width: 768px) {
+
+  /* Shrink entire hero */
+  .hero-section {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+
+  /* Headline size reduction */
+  .hero-headline {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .hero-subtext {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Floating layers should not overwhelm mobile */
+  
+  /* Final: Reduce size & opacity */
+  .float-mobile {
+    scale: 0.35 !important;
+    opacity: 0.45 !important;
+  }
+
+  /* Reposition floaters away from the center */
+  .float-stat      { top: 5% !important; left: 2% !important; }
+  .float-bar       { top: 70% !important; left: 2% !important; }
+  .float-social    { top: 5% !important; right: 2% !important; }
+  .float-views     { top: 65% !important; right: 2% !important; }
+
+  /* OPTIONAL — Hide 2 cards for best mobile UX */
+  .hide-mobile {
+    display: none !important;
+  }
+}
