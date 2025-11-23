@@ -54,7 +54,7 @@ const CTA = () => {
               <CountUp
                 start={0}
                 end={38}
-                duration={5}
+                duration={8}
                 
                 prefix="+"
                 suffix="%"

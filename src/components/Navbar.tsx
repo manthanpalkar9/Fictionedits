@@ -8,7 +8,7 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary-light flex items-center justify-center">
-            <span className="text-white font-bold text-sm tracking-tight md:tracking-[-0.06em]">F</span>
+            <span className="text-white font-italic text-sm tracking-tight md:tracking-[-0.06em]">Fiction</span>
           </div>
 
           <span className="text-xl font-bold tracking-tight md:tracking-[-0.06em]">
@@ -59,7 +59,7 @@ const Navbar = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Book a Call
+            Start your project
           </a>
         </Button>
 
