@@ -1,54 +1,93 @@
-import { Video, Wand2, TrendingUp, Upload } from "lucide-react";
+import { Upload, Wand2, TrendingUp } from "lucide-react";
 
-export default function Process() {
+const Process = () => {
   const steps = [
     {
-      number: "1",
+      icon: Upload,
       title: "Submit Your Footage",
-      desc: "Upload your raw recordings through our secure portal. We handle the rest from there.",
-      icon: <Upload className="w-7 h-7 text-primary" />,
+      description:
+        "Upload your raw recordings through our secure portal. We handle the rest from there.",
     },
     {
-      number: "2",
+      icon: Wand2,
       title: "Your Content, Reinvented",
-      desc: "Our expert editors craft custom-styled, branded edits optimized for maximum retention.",
-      icon: <Wand2 className="w-7 h-7 text-primary" />,
+      description:
+        "Our expert editors craft custom-styled, branded edits optimized for maximum retention.",
     },
     {
-      number: "3",
+      icon: TrendingUp,
       title: "Maximize Your Reach",
-      desc: "Receive platform-optimized content with proven strategies to boost views and engagement.",
-      icon: <TrendingUp className="w-7 h-7 text-primary" />,
+      description:
+        "Receive platform-optimized content with proven strategies to boost views and engagement.",
     },
   ];
 
   return (
-    <section id="process" className="py-32 relative">
-      <div className="container mx-auto px-6">
-        <h2 className="section-title">Powerful Results</h2>
+    <section
+      id="process"
+      className="py-32 relative overflow-hidden font-helvetica"
+    >
+      {/* Background */}
+      <div className="absolute inset-0 grid-bg opacity-10" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
-        <div className="mt-16 space-y-10">
-          {steps.map((step, i) => (
+      <div className="container mx-auto px-6 relative z-10">
+        
+        {/* Header */}
+        <div className="text-center mb-20 animate-fade-in">
+          <div className="inline-block px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-semibold mb-4 tracking-tight md:tracking-[-0.06em]">
+            How It Works
+          </div>
+
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight md:tracking-[-0.06em] leading-tight">
+            Simple Process,{" "}
+            <span className="text-glow bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
+              Powerful Results
+            </span>
+          </h2>
+        </div>
+
+        {/* Steps */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {steps.map((step, index) => (
             <div
-              key={i}
-              className="relative p-6 md:p-10 rounded-3xl glass-card border border-primary/20"
+              key={index}
+              className="relative animate-fade-in tracking-tight md:tracking-[-0.06em]"
+              style={{ animationDelay: `${index * 150}ms` }}
             >
-              {/* Step Number Bubble */}
-              <div className="absolute -left-4 -top-4 w-14 h-14 rounded-full bg-primary flex items-center justify-center text-white font-bold shadow-lg text-xl">
-                {step.number}
+              <div className="glass-card p-8 rounded-2xl hover:scale-105 transition-all duration-300 h-full">
+
+                {/* Step number */}
+                <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-light flex items-center justify-center text-white font-bold shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+                  {index + 1}
+                </div>
+
+                {/* Icon */}
+                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 mt-4">
+                  <step.icon className="w-8 h-8 text-primary" />
+                </div>
+
+                {/* Title */}
+                <h3 className="text-2xl font-bold mb-4 tracking-tight md:tracking-[-0.06em]">
+                  {step.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-muted-foreground leading-relaxed tracking-tight md:tracking-[-0.06em]">
+                  {step.description}
+                </p>
               </div>
 
-              {/* ICON FIXED FOR MOBILE */}
-              <div className="w-16 h-16 rounded-2xl bg-primary/10 backdrop-blur-lg border border-primary/20 shadow-[0_0_10px_rgba(168,85,247,0.3)] flex items-center justify-center mb-6">
-                {step.icon}
-              </div>
-
-              <h3 className="text-2xl md:text-3xl font-semibold">{step.title}</h3>
-              <p className="text-muted-foreground mt-3 md:text-lg">{step.desc}</p>
+              {/* Connector line */}
+              {index < steps.length - 1 && (
+                <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-primary/50 to-transparent" />
+              )}
             </div>
           ))}
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default Process;
