@@ -53,34 +53,36 @@ const CTA = () => {
             <div className="text-center tracking-tight md:tracking-[-0.06em]">
               <CountUp
                 start={0}
-                end={50}
+                end={38}
                 duration={5}
-                suffix="+"
+                
+                prefix="+"
+                suffix="%"
                 className="text-3xl font-bold text-glow mb-2"
               />
-              <div className="text-sm text-muted-foreground">Happy Clients</div>
+              <div className="text-sm text-muted-foreground">Avg watch time</div>
             </div>
 
             <div className="text-center tracking-tight md:tracking-[-0.06em]">
               <CountUp
                 start={0}
-                end={500}
-                duration={2}
+                end={3610}
+                duration={8}
                 suffix="+"
                 className="text-3xl font-bold text-glow mb-2"
               />
-              <div className="text-sm text-muted-foreground">Videos Created</div>
+              <div className="text-sm text-muted-foreground">Hours viewed</div>
             </div>
 
             <div className="text-center tracking-tight md:tracking-[-0.06em]">
               <CountUp
                 start={0}
-                end={10}
-                duration={2}
-                suffix="M+"
+                end={100}
+                duration={7}
+                suffix="k+"
                 className="text-3xl font-bold text-glow mb-2"
               />
-              <div className="text-sm text-muted-foreground">Views Generated</div>
+              <div className="text-sm text-muted-foreground">Monthly Views Generated</div>
             </div>
 
           </div>
