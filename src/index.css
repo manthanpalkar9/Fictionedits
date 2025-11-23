@@ -116,44 +116,63 @@ body {
     letter-spacing: -0.01em; /* normal on mobile */
   }
 }
-/* -------------------------------------------------- */
-/* HERO MOBILE FIXES */
-/* -------------------------------------------------- */
+/* =======================
+   MOBILE FIX FOR HERO FLOATING CARDS
+   ======================= */
 @media (max-width: 768px) {
 
-  /* Shrink entire hero */
-  .hero-section {
-    padding-top: 4rem !important;
-    padding-bottom: 4rem !important;
+  /* Reduce parallax movement on mobile */
+  .float-mobile-base {
+    transform: scale(0.55) !important;
+    opacity: 0.85 !important;
   }
 
-  /* Headline size reduction */
+  /* Position TOP-LEFT Likes card */
+  .float-stat {
+    top: 12% !important;
+    left: 4% !important;
+    scale: 0.7 !important;
+  }
+
+  /* Hide bar chart (too big for mobile) */
+  .hide-mobile {
+    display: none !important;
+  }
+
+  /* Position the social icons cluster */
+  .float-social {
+    top: 12% !important;
+    right: 4% !important;
+    scale: 0.75 !important;
+  }
+
+  /* Hide scribble arrows (take up space) */
+  svg {
+    display: none !important;
+  }
+
+  /* Show ONLY Likes card + Social icons on mobile */
+  .float-views {
+    display: none !important;
+  }
+
+  /* Prevent cards from overlapping buttons */
+  .hero-section {
+    padding-top: 220px !important;
+  }
+
   .hero-headline {
-    font-size: 2rem !important;
+    margin-top: 30px !important;
+  }
+
+  /* Reduce headline for mobile */
+  .hero-headline {
+    font-size: 2.4rem !important;
     line-height: 1.2 !important;
   }
 
-  .hero-subtext {
-    font-size: 1rem !important;
-    line-height: 1.5 !important;
-  }
-
-  /* Floating layers should not overwhelm mobile */
-  
-  /* Final: Reduce size & opacity */
-  .float-mobile {
-    scale: 0.35 !important;
-    opacity: 0.45 !important;
-  }
-
-  /* Reposition floaters away from the center */
-  .float-stat      { top: 5% !important; left: 2% !important; }
-  .float-bar       { top: 70% !important; left: 2% !important; }
-  .float-social    { top: 5% !important; right: 2% !important; }
-  .float-views     { top: 65% !important; right: 2% !important; }
-
-  /* OPTIONAL — Hide 2 cards for best mobile UX */
-  .hide-mobile {
-    display: none !important;
+  /* Smaller buttons */
+  .mobile-btn {
+    transform: scale(0.9);
   }
 }
