@@ -7,9 +7,11 @@ const Navbar = () => {
 
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary-light flex items-center justify-center">
-            <span className="text-white font-italic text-sm tracking-tight md:tracking-[-0.06em]">Fiction</span>
-          </div>
+          <img 
+            src="/Logo.png" 
+            alt="Logo"
+            className="w-8 h-8 rounded-lg object-cover"
+          />
 
           <span className="text-xl font-bold tracking-tight md:tracking-[-0.06em]">
             FictionEdits <span className="text-primary">Media</span>
@@ -18,47 +20,23 @@ const Navbar = () => {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          <a
-            href="#about"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors tracking-tight md:tracking-[-0.06em]"
-          >
+          <a href="#about" className="text-sm text-muted-foreground hover:text-foreground transition-colors tracking-tight md:tracking-[-0.06em]">
             About
           </a>
-
-          <a
-            href="#showcase"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors tracking-tight md:tracking-[-0.06em]"
-          >
+          <a href="#showcase" className="text-sm text-muted-foreground hover:text-foreground transition-colors tracking-tight md:tracking-[-0.06em]">
             Showcase
           </a>
-
-          <a
-            href="#process"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors tracking-tight md:tracking-[-0.06em]"
-          >
+          <a href="#process" className="text-sm text-muted-foreground hover:text-foreground transition-colors tracking-tight md:tracking-[-0.06em]">
             Process
           </a>
-
-          <a
-            href="#faq"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors tracking-tight md:tracking-[-0.06em]"
-          >
+          <a href="#faq" className="text-sm text-muted-foreground hover:text-foreground transition-colors tracking-tight md:tracking-[-0.06em]">
             FAQ
           </a>
         </div>
 
-        {/* CTA Button */}
-        <Button
-          variant="neon"
-          size="lg"
-          asChild
-          className="tracking-tight md:tracking-[-0.06em] font-helvetica"
-        >
-          <a
-            href="https://calendly.com/manthanpalkar9/let-s-work"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+        {/* CTA */}
+        <Button variant="neon" size="lg" asChild className="tracking-tight md:tracking-[-0.06em] font-helvetica">
+          <a href="https://calendly.com/manthanpalkar9/let-s-work" target="_blank">
             Start your project
           </a>
         </Button>
