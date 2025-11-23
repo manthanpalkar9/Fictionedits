@@ -54,7 +54,7 @@ const CTA = () => {
               <CountUp
                 start={0}
                 end={38}
-                duration={8}
+                duration={10}
                 
                 prefix="+"
                 suffix="%"
@@ -67,7 +67,7 @@ const CTA = () => {
               <CountUp
                 start={0}
                 end={3610}
-                duration={8}
+                duration={10}
                 suffix="+"
                 className="text-3xl font-bold text-glow mb-2"
               />
@@ -78,7 +78,7 @@ const CTA = () => {
               <CountUp
                 start={0}
                 end={100}
-                duration={7}
+                duration={10}
                 suffix="k+"
                 className="text-3xl font-bold text-glow mb-2"
               />

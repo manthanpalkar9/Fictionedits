@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary-light flex items-center justify-center">
-              <span className="text-white font-bold text-sm tracking-tight md:tracking-[-0.06em]">F</span>
+              <span className="text-white font-bold text-sm tracking-tight md:tracking-[-0.06em]">Fiction</span>
             </div>
 
             <span className="text-lg font-bold tracking-tight md:tracking-[-0.06em]">
@@ -47,7 +47,7 @@ const Footer = () => {
 
         {/* Bottom Text */}
         <div className="text-center text-sm text-muted-foreground mt-8 pt-8 border-t border-border/30 tracking-tight md:tracking-[-0.06em]">
-          © 2024 FictionEdits Media. All rights reserved.
+          © 2025 FictionEdits Media. All rights reserved.
         </div>
       </div>
     </footer>
