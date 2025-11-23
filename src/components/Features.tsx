@@ -300,12 +300,13 @@ const Features = () => {
                   </div>
 
                   {/* Icon */}
-                  <div className="relative">
-                    <div className="absolute inset-0 rounded-2xl bg-primary/40 blur-xl opacity-60" />
-                    <div className="relative w-11 h-11 flex items-center justify-center rounded-2xl bg-black/70 border border-primary/40">
-                      <feature.icon className="w-5 h-5 text-primary" />
-                    </div>
-                  </div>
+                  <div className="relative w-11 h-11 flex items-center justify-center rounded-2xl 
+     bg-black/60 md:bg-black/70 
+     border border-primary/40 
+     backdrop-blur-sm">
+  <feature.icon className="w-5 h-5 text-primary" />
+</div>
+
                 </div>
 
                 <div className="mt-10">

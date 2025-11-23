@@ -281,18 +281,22 @@ const Hero = () => {
             className="text-3xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tight"
           >
             {["Transform", "Your", "Content", "Into"].map((word, i) => (
-              <motion.span key={i} variants={wordItem} className="inline-block mr-2">
-                {word}
-              </motion.span>
-            ))}
+  <motion.span
+    key={i}
+    variants={wordItem}
+    className="inline-block mr-2"
+  >
+    {word}
+  </motion.span>
+))}
 
-            <motion.span
-              variants={wordItem}
-              className="block text-glow bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent mt-2"
-            >
-              Viral Masterpieces
-            </motion.span>
-          </motion.h1>
+<motion.span
+  variants={wordItem}
+  className="block text-glow bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent"
+>
+  Viral Masterpieces
+</motion.span>
+
 
           {/* Subtitle */}
           <p className="text-base md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
