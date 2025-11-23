@@ -5,12 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Instagram, Youtube, Heart } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 import CountUp from "react-countup";
-import { motion, useMotionValue } from "framer-motion";
+import { motion, useMotionValue, Variants } from "framer-motion";
 
 /* ----------------------------------------------------
-   SYNCWAVE TEXT ANIMATION
+   TEXT ANIMATION VARIANTS (STRICTLY TYPED)
 ---------------------------------------------------- */
-const wordContainer = {
+const wordContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -18,34 +18,44 @@ const wordContainer = {
   },
 };
 
-const wordItem = {
-  hidden: { opacity: 0, y: 30 },
+const wordItem: Variants = {
+  hidden: { opacity: 0, y: 25 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { duration: 0.5, ease: "easeOut" },
   },
 };
 
 /* ----------------------------------------------------
-   SOCIAL SVGs (mobile-safe)
+   MOBILE-SAFE SVG ICONS
 ---------------------------------------------------- */
 const TikTokIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-    <path d="M19.59 6.69A4.83 4.83 0 0 1 15.82 2V2h-3.45v13.67a2.89 2.89 0 1 1-3.77-2.9v-3.37a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52V6.79c-.35-.03-.68-.1-1-.1z" />
+    <path d="M19.59 6.69a4.8 4.8 0 0 1-3.77-4.25h-3.45v13.67a2.9 2.9 0 1 1-3.77-2.9v-3.37a6.8 6.8 0 0 0-1-.05A6.33 6.33 0 1 0 15.86 15V8a8 8 0 0 0 4.73 1.5V6.79a4.5 4.5 0 0 1-1-.1z" />
   </svg>
 );
 
 const FacebookIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-    <path d="M24 12.07c0-6.63-5.37-12-12-12S0 5.44 0 12.07c0 6 4.39 10.96 10.13 11.85v-8.39H7.08v-3.47h3.05V9.43c0-3 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.52c-1.5 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.47h-2.8v8.39C19.61 23.03 24 18.06 24 12.07z" />
+    <path d="M24 12.07C24 5.4 18.6 0 12 0S0 5.4 0 12.07c0 6 4.4 11 10.1 11.9v-8.4H7.1v-3.5h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9v2.3h3.3l-.5 3.5h-2.8v8.4C19.6 23.1 24 18.1 24 12.07z" />
   </svg>
 );
 
 /* ----------------------------------------------------
-   FLOATING ELEMENTS (desktop only)
+   FLOATING MOTION (DESKTOP ONLY)
 ---------------------------------------------------- */
-const Floating = ({ children, depth = 0.03, className = "", style = {} }) => {
+const Floating = ({
+  children,
+  depth = 0.03,
+  className = "",
+  style = {},
+}: {
+  children: React.ReactNode;
+  depth?: number;
+  className?: string;
+  style?: React.CSSProperties;
+}) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -56,13 +66,13 @@ const Floating = ({ children, depth = 0.03, className = "", style = {} }) => {
     };
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
-  }, [depth]);
+  }, []);
 
   return (
     <motion.div
       className={className}
       style={{ x, y, position: "absolute", ...style }}
-      animate={{ y: [0, -12, 0], x: [0, 6, 0] }}
+      animate={{ y: [0, -10, 0], x: [0, 6, 0] }}
       transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
     >
       {children}
@@ -70,32 +80,41 @@ const Floating = ({ children, depth = 0.03, className = "", style = {} }) => {
   );
 };
 
+/* ----------------------------------------------------
+   SCRIBBLE ARROW
+---------------------------------------------------- */
 const ScribbleArrow = ({ className = "" }) => (
   <svg
     className={`absolute ${className}`}
-    width="80"
-    height="60"
-    viewBox="0 0 80 60"
+    width="70"
+    height="55"
+    viewBox="0 0 70 55"
     fill="none"
     stroke="white"
     strokeWidth="2"
   >
-    <path d="M5 50 Q20 40, 35 30 T65 10" />
+    <path d="M5 50 Q20 40, 35 28 T65 10" />
     <path d="M65 10 L60 5 L65 10 L60 15" />
   </svg>
 );
 
+/* ----------------------------------------------------
+   FLOATING CARDS (DESKTOP)
+---------------------------------------------------- */
 const FloatingStatCard = () => (
   <Floating depth={0.025} className="hidden md:block top-[10%] left-[5%] z-30">
     <motion.div className="glass-card p-5 rounded-xl border border-primary/40 relative">
       <div className="text-xs text-primary/80">Total Likes</div>
+
       <div className="flex items-center gap-2 mt-1">
         <CountUp start={0} end={63} duration={3} className="text-4xl font-bold" />
         <span className="text-primary text-2xl">,000</span>
       </div>
+
       <Heart className="absolute -top-2 -right-2 w-8 h-8 text-primary" fill="currentColor" />
     </motion.div>
-    <ScribbleArrow className="top-1/2 left-full translate-x-2" />
+
+    <ScribbleArrow className="top-1/2 left-full translate-x-2 -translate-y-1/2" />
   </Floating>
 );
 
@@ -103,6 +122,7 @@ const FloatingBarChart = () => (
   <Floating depth={0.025} className="hidden md:block top-[70%] left-[7%] z-30">
     <motion.div className="glass-card p-5 rounded-xl border border-primary/40">
       <div className="text-xs text-primary/80 mb-2">Last 6 Months</div>
+
       <div className="flex items-end gap-2 h-24">
         {[40, 60, 50, 75, 85, 95].map((h, i) => (
           <div key={i} className="flex-1 flex flex-col items-center">
@@ -118,9 +138,9 @@ const FloatingBarChart = () => (
   </Floating>
 );
 
-/* DESKTOP FLOATING + MOBILE ICONS */
 const FloatingSocialCluster = () => (
   <>
+    {/* DESKTOP FLOATING */}
     <Floating depth={0.025} className="hidden md:flex top-[10%] right-[5%] z-30">
       <motion.div className="glass-card px-6 py-4 rounded-full flex gap-4 border border-primary/40">
         <Instagram className="w-6 h-6 text-primary" />
@@ -130,7 +150,7 @@ const FloatingSocialCluster = () => (
       </motion.div>
     </Floating>
 
-    {/* Always visible on mobile */}
+    {/* ALWAYS visible on mobile */}
     <div className="md:hidden flex justify-center gap-6 mt-6">
       <Instagram className="w-6 h-6 text-primary" />
       <Youtube className="w-6 h-6 text-primary" />
@@ -157,14 +177,14 @@ const FloatingViewsPanel = () => (
 );
 
 /* ----------------------------------------------------
-   BLOBS
+   FLOATING BLOBS
 ---------------------------------------------------- */
 const FloatingBlob = ({ top, left, width, height, delay = 0 }) => (
   <Floating depth={0.02} className="absolute" style={{ top, left, width, height }}>
     <motion.div
       className="rounded-full bg-primary/10 blur-3xl opacity-30 w-full h-full"
-      animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
-      transition={{ duration: 8 + delay, repeat: Infinity }}
+      animate={{ scale: [1, 1.15, 1], opacity: [0.2, 0.4, 0.2] }}
+      transition={{ duration: 8 + delay, repeat: Infinity, ease: "easeInOut" }}
     />
   </Floating>
 );
@@ -177,7 +197,10 @@ const Hero = () => {
     <section className="relative py-24 md:py-32 min-h-screen overflow-hidden flex items-center justify-center">
 
       {/* BACKGROUND */}
-      <div className="absolute inset-0 bg-cover bg-center opacity-30 -z-10" style={{ backgroundImage: `url(${heroImage})` }} />
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-30 -z-10"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      />
       <div className="absolute inset-0 bg-gradient-to-b from-background/80 to-background -z-10" />
       <div className="absolute inset-0 grid-bg opacity-15 -z-10" />
 
@@ -193,7 +216,7 @@ const Hero = () => {
       <FloatingSocialCluster />
       <FloatingViewsPanel />
 
-      {/* CONTENT */}
+      {/* MAIN CONTENT */}
       <div className="relative z-50 container mx-auto px-6 text-center">
         <div className="max-w-5xl mx-auto space-y-8">
 
@@ -204,9 +227,9 @@ const Hero = () => {
             animate="visible"
             className="text-3xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tight"
           >
-            {["Transform", "Your", "Content", "Into"].map((w, i) => (
+            {["Transform", "Your", "Content", "Into"].map((word, i) => (
               <motion.span key={i} variants={wordItem} className="inline-block mr-2">
-                {w}
+                {word}
               </motion.span>
             ))}
 
@@ -219,12 +242,12 @@ const Hero = () => {
           </motion.h1>
 
           {/* SUBTITLE */}
-          <p className="text-base md:text-2xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Premium video editing that converts views into loyal audiences.
             We craft high-retention short-form content for top creators worldwide.
           </p>
 
-          {/* CTA */}
+          {/* CTA BUTTONS */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
             <Button asChild variant="neon" size="xl">
               <a href="https://calendly.com/manthanpalkar9/let-s-work" target="_blank">
@@ -242,7 +265,6 @@ const Hero = () => {
               View Our Work
             </Button>
           </div>
-
         </div>
       </div>
     </section>
