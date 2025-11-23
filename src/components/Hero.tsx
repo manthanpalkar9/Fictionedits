@@ -197,7 +197,26 @@ const Hero = () => {
       <div className="relative z-50 container mx-auto px-6 text-center">
         <div className="max-w-5xl mx-auto space-y-8">
 
-         
+          {/* ANIMATED TITLE */}
+          <motion.h1
+            variants={wordContainer}
+            initial="hidden"
+            animate="visible"
+            className="text-3xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tight"
+          >
+            {["Transform", "Your", "Content", "Into"].map((w, i) => (
+              <motion.span key={i} variants={wordItem} className="inline-block mr-2">
+                {w}
+              </motion.span>
+            ))}
+
+            <motion.span
+              variants={wordItem}
+              className="block text-glow bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent"
+            >
+              Viral Masterpieces
+            </motion.span>
+          </motion.h1>
 
           {/* SUBTITLE */}
           <p className="text-base md:text-2xl text-muted-foreground max-w-3xl mx-auto">
