@@ -26,6 +26,88 @@ const wordItem: Variants = {
     transition: { duration: 0.5, ease: "easeOut" },
   },
 };
+/* ----------------------------------------------------
+   MOBILE MINI LINE GRAPH
+   Social Analytics Style
+---------------------------------------------------- */
+const MobileLineGraph = () => {
+  const points = [20, 40, 55, 35, 75, 90];
+  const max = Math.max(...points);
+
+  // Convert data to SVG coords
+  const path = points
+    .map((p, i) => {
+      const x = (i / (points.length - 1)) * 100;
+      const y = 100 - (p / max) * 100;
+      return `${x},${y}`;
+    })
+    .join(" ");
+
+  return (
+    <div className="md:hidden glass-card p-4 rounded-xl border border-primary/30 text-left">
+      <div className="text-xs text-primary/70 mb-2">Engagement Trend</div>
+
+      <svg viewBox="0 0 100 100" className="w-full h-20">
+        {/* gradient line */}
+        <defs>
+          <linearGradient id="lineGrad" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0%" stopColor="#8b5cf6" />
+            <stop offset="100%" stopColor="#ec4899" />
+          </linearGradient>
+        </defs>
+
+        {/* Area fill */}
+        <motion.polygon
+          points={`0,100 ${path} 100,100`}
+          fill="url(#lineGrad)"
+          opacity="0.18"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.18 }}
+          transition={{ duration: 0.8 }}
+        />
+
+        {/* Main curved line */}
+        <motion.polyline
+          points={path}
+          fill="none"
+          stroke="url(#lineGrad)"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+        />
+      </svg>
+    </div>
+  );
+};
+
+/* ----------------------------------------------------
+   MOBILE MINI BAR CHART
+   Social Analytics Style
+---------------------------------------------------- */
+const MobileBarChart = () => {
+  const bars = [35, 50, 70, 45, 85];
+  const max = Math.max(...bars);
+
+  return (
+    <div className="md:hidden glass-card p-4 rounded-xl border border-primary/30 text-left">
+      <div className="text-xs text-primary/70 mb-2">Audience Growth</div>
+
+      <div className="flex items-end gap-3 h-24">
+        {bars.map((b, i) => (
+          <motion.div
+            key={i}
+            initial={{ height: 0 }}
+            animate={{ height: `${(b / max) * 100}%` }}
+            transition={{ duration: 0.8, delay: i * 0.1 }}
+            className="w-5 rounded-md bg-gradient-to-t from-primary/50 to-primary"
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 /* ----------------------------------------------------
    MOBILE-SAFE SVG ICONS
@@ -218,6 +300,11 @@ const MobileStats = () => {
     </div>
   );
 };
+{/* MOBILE ANALYTICS CHARTS */}
+<div className="md:hidden grid grid-cols-1 gap-4 mt-6">
+  <MobileLineGraph />
+  <MobileBarChart />
+</div>
 
 /* ----------------------------------------------------
    HERO SECTION
