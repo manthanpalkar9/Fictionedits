@@ -150,7 +150,7 @@ const FloatingSocialCluster = () => (
       </motion.div>
     </Floating>
 
-    {/* ALWAYS visible on mobile */}
+    {/* ALWAYS ON MOBILE */}
     <div className="md:hidden flex justify-center gap-6 mt-6">
       <Instagram className="w-6 h-6 text-primary" />
       <Youtube className="w-6 h-6 text-primary" />
@@ -188,6 +188,36 @@ const FloatingBlob = ({ top, left, width, height, delay = 0 }) => (
     />
   </Floating>
 );
+
+/* ----------------------------------------------------
+   ✔ MOBILE STATS (NEW)
+---------------------------------------------------- */
+const MobileStats = () => {
+  return (
+    <div className="md:hidden grid grid-cols-3 gap-4 mt-10 text-center">
+
+      <div className="glass-card p-4 rounded-xl border border-primary/30">
+        <div className="text-[10px] text-primary/70">Likes</div>
+        <div className="text-xl font-bold">
+          <CountUp start={0} end={63} duration={2} />k
+        </div>
+      </div>
+
+      <div className="glass-card p-4 rounded-xl border border-primary/30">
+        <div className="text-[10px] text-primary/70">Views</div>
+        <div className="text-xl font-bold">
+          <CountUp start={0} end={500} duration={2} />k
+        </div>
+      </div>
+
+      <div className="glass-card p-4 rounded-xl border border-primary/30">
+        <div className="text-[10px] text-primary/70">Growth</div>
+        <div className="text-xl font-bold text-primary">+240%</div>
+      </div>
+
+    </div>
+  );
+};
 
 /* ----------------------------------------------------
    HERO SECTION
@@ -246,6 +276,9 @@ const Hero = () => {
             Premium video editing that converts views into loyal audiences.
             We craft high-retention short-form content for top creators worldwide.
           </p>
+
+          {/* ✔ MOBILE STATS INSERTED HERE */}
+          <MobileStats />
 
           {/* CTA BUTTONS */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
