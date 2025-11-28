@@ -296,13 +296,18 @@ const Features = () => {
 
                   {/* FIXED ICON VISIBLE ON MOBILE */}
                   <div
-                    className="relative w-11 h-11 flex items-center justify-center rounded-2xl 
-                       bg-black/40 md:bg-black/70 
-                       border border-primary/40 
-                       backdrop-blur-sm"
+                    className="relative z-[5] w-11 h-11 flex items-center justify-center rounded-2xl 
+     bg-black/40 md:bg-black/70 
+     border border-primary/40 
+     backdrop-blur-sm"
                   >
-                    <feature.icon className="w-5 h-5 text-primary" />
+                    <feature.icon
+                      className="w-5 h-5 
+    text-white md:text-primary 
+    drop-shadow-[0_0_4px_rgba(255,255,255,0.6)]"
+                    />
                   </div>
+
                 </div>
 
                 <div className="mt-10">
