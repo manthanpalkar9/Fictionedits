@@ -92,7 +92,6 @@ const chipVariants: any = {
   }),
 };
 
-
 /* ======================
    COMPONENT
 ====================== */
@@ -148,7 +147,6 @@ const Features = () => {
 
               {/* Unique Graphics for each card */}
               {feature.tag === "Growth" && (
-                // Growth Card: Upward trending bar chart
                 <div className="absolute inset-x-0 top-16 px-8 pointer-events-none">
                   <div className="flex items-end gap-1.5 h-16 opacity-40">
                     {[4, 7, 10, 8, 12, 15, 18].map((h, idx) => (
@@ -162,7 +160,7 @@ const Features = () => {
                       />
                     ))}
                   </div>
-                  {/* Trend line overlay */}
+
                   <svg className="absolute bottom-0 left-8 right-8 h-16 opacity-30" viewBox="0 0 200 60">
                     <path
                       d="M 0 50 Q 30 45, 60 35 T 120 15 T 180 5"
@@ -182,17 +180,14 @@ const Features = () => {
               )}
 
               {feature.tag === "Design" && (
-                // Design Card: Palette and brush strokes
                 <div className="absolute inset-x-0 top-16 px-8 pointer-events-none">
-                  {/* Palette circle */}
                   <div className="absolute right-12 top-0 w-20 h-20 opacity-30">
                     <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/40 to-primary/10 border-2 border-primary/30" />
-                    {/* Color dots on palette */}
                     <div className="absolute top-2 right-2 w-3 h-3 rounded-full bg-primary/80" />
                     <div className="absolute top-6 left-1 w-2 h-2 rounded-full bg-primary/60" />
                     <div className="absolute bottom-2 right-1 w-2.5 h-2.5 rounded-full bg-primary/70" />
                   </div>
-                  {/* Brush strokes */}
+
                   <div className="absolute left-8 top-4 space-y-3 opacity-25">
                     <motion.div
                       className="w-16 h-1.5 rounded-full bg-gradient-to-r from-transparent via-primary/60 to-transparent"
@@ -213,7 +208,7 @@ const Features = () => {
                       transition={{ delay: 0.6, duration: 0.6 }}
                     />
                   </div>
-                  {/* Geometric shapes */}
+
                   <div className="absolute bottom-2 right-16 space-y-2 opacity-20">
                     <div className="w-8 h-8 border-2 border-primary/40 rounded-lg rotate-12" />
                     <div className="w-6 h-6 border-2 border-primary/30 rounded-full ml-2" />
@@ -222,11 +217,8 @@ const Features = () => {
               )}
 
               {feature.tag === "Strategy" && (
-                // Strategy Card: Arrow trend with nodes
                 <div className="absolute inset-x-0 top-16 px-8 pointer-events-none">
-                  {/* Strategy visualization with arrows and nodes */}
                   <svg className="w-full h-16 opacity-40" viewBox="0 0 200 60">
-                    {/* Main trend line with arrows */}
                     <path
                       d="M 10 50 L 40 35 L 70 25 L 100 18 L 130 12 L 160 8 L 190 5"
                       stroke="url(#gradient-strategy)"
@@ -235,24 +227,22 @@ const Features = () => {
                       strokeLinecap="round"
                       markerEnd="url(#arrowhead)"
                     />
-                    {/* Nodes on strategy points */}
-                    {[
-                      { x: 40, y: 35 },
-                      { x: 100, y: 18 },
-                      { x: 160, y: 8 },
-                    ].map((point, idx) => (
-                      <motion.circle
-                        key={idx}
-                        cx={point.x}
-                        cy={point.y}
-                        r="4"
-                        fill="hsl(271, 91%, 65%)"
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 0.8 }}
-                        transition={{ delay: idx * 0.2 + 0.3, duration: 0.4 }}
-                      />
-                    ))}
-                    {/* Connecting lines between nodes */}
+
+                    {[{ x: 40, y: 35 }, { x: 100, y: 18 }, { x: 160, y: 8 }].map(
+                      (point, idx) => (
+                        <motion.circle
+                          key={idx}
+                          cx={point.x}
+                          cy={point.y}
+                          r="4"
+                          fill="hsl(271, 91%, 65%)"
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 0.8 }}
+                          transition={{ delay: idx * 0.2 + 0.3, duration: 0.4 }}
+                        />
+                      )
+                    )}
+
                     <path
                       d="M 10 50 L 190 5"
                       stroke="hsl(271, 91%, 65%)"
@@ -260,11 +250,13 @@ const Features = () => {
                       strokeDasharray="4 4"
                       opacity="0.2"
                     />
+
                     <defs>
                       <linearGradient id="gradient-strategy" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" stopColor="hsl(271, 91%, 65%)" stopOpacity="0.5" />
                         <stop offset="100%" stopColor="hsl(271, 95%, 76%)" stopOpacity="1" />
                       </linearGradient>
+
                       <marker
                         id="arrowhead"
                         markerWidth="10"
@@ -273,11 +265,15 @@ const Features = () => {
                         refY="3"
                         orient="auto"
                       >
-                        <polygon points="0 0, 10 3, 0 6" fill="hsl(271, 91%, 65%)" opacity="0.8" />
+                        <polygon
+                          points="0 0, 10 3, 0 6"
+                          fill="hsl(271, 91%, 65%)"
+                          opacity="0.8"
+                        />
                       </marker>
                     </defs>
                   </svg>
-                  {/* Strategy nodes labels */}
+
                   <div className="absolute bottom-0 left-8 right-8 flex justify-between text-[8px] text-primary/50 opacity-60">
                     <span>Start</span>
                     <span>Execute</span>
@@ -289,7 +285,6 @@ const Features = () => {
               {/* Content */}
               <div className="relative px-7 pt-7 pb-8 flex flex-col justify-between h-full">
                 <div className="flex items-center justify-between mb-6">
-                  {/* Tag */}
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/40 border border-white/10 text-[11px] uppercase tracking-wide text-muted-foreground">
                     <MotionSpan
                       animate={{ opacity: [0.5, 1, 0.5] }}
@@ -299,14 +294,15 @@ const Features = () => {
                     {feature.tag}
                   </div>
 
-                  {/* Icon */}
-                  <div className="relative w-11 h-11 flex items-center justify-center rounded-2xl 
-     bg-black/60 md:bg-black/70 
-     border border-primary/40 
-     backdrop-blur-sm">
-  <feature.icon className="w-5 h-5 text-primary" />
-</div>
-
+                  {/* FIXED ICON VISIBLE ON MOBILE */}
+                  <div
+                    className="relative w-11 h-11 flex items-center justify-center rounded-2xl 
+                       bg-black/40 md:bg-black/70 
+                       border border-primary/40 
+                       backdrop-blur-sm"
+                  >
+                    <feature.icon className="w-5 h-5 text-primary" />
+                  </div>
                 </div>
 
                 <div className="mt-10">
